@@ -5,6 +5,8 @@
  */
 package org.jerverless.boot;
 
+import org.jerverless.core.server.FunctionServer;
+
 /**
  *
  * Boots the jerverless server with command line
@@ -17,6 +19,9 @@ public class BootServer {
      * @return 
      */
     public static void main(String[] args) {
-        System.out.println("Bootstrap logic..");
+        System.out.println("Bootstrapping server...");
+        FunctionServer.create().start();
+        
+        
     }
 }
