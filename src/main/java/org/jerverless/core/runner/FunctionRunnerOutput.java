@@ -5,12 +5,14 @@
  */
 package org.jerverless.core.runner;
 
-import java.io.IOException;
-
 /**
  *
  * @author shalithasuranga
  */
-public interface IFunctionRunner {
-    public FunctionRunnerResponse exec() throws IOException ;
+public class FunctionRunnerOutput extends FunctionRunnerResponse {
+    
+    public FunctionRunnerOutput(String content) {
+        super(content);
+    }
+    
 }
