@@ -1,10 +1,27 @@
 # jerverless
-Turn anything into serverless function
+Turn anything into a serverless function.. Docker ready!
 
 
-# Idea
+jerverless is a serverless runner which will execute anything (binaries, commands or your scripts) as a serverless function.
 
-- This will be a runtime server for serverless function
-- Server has a command line interface to restart, shutdown 
-- HTTP data will be piped to serverless function (can be any form of binary executable)
-- Docker ready!. 
+- [ ] Initial work (Structure, basic server with runner)
+- [ ] Multithreaded server mode
+- [ ] Unit cases
+- [ ] CLI commands
+- [ ] Dockerfile
+- [ ] Release!
+
+
+# Developer guide
+
+```bash
+ git clone <forked_url>
+```
+
+```bash
+ mvn clean package
+```
+
+```
+ java -jar org.jerverless-0.0.1-SNAPSHOT.jar 
+```
