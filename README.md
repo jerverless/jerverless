@@ -13,7 +13,7 @@ jerverless is a serverless runner which will execute anything (binaries, command
 - [ ] Release!
 
 
-# Developer guide
+# Developer Guide
 
 ```bash
  git clone <forked_url>
