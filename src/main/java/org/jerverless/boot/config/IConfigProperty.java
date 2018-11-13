@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.jerverless.core.runner;
-
-import com.sun.net.httpserver.HttpExchange;
-import java.io.IOException;
+package org.jerverless.boot.config;
 
 /**
  *
  * @author shalithasuranga
  */
-public interface IFunctionRunner {
-    public FunctionRunnerResponse exec(HttpExchange he) throws IOException ;
+public abstract class IConfigProperty {
+    
 }

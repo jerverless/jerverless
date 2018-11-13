@@ -18,7 +18,7 @@ import org.jerverless.core.runner.FunctionRunner;
 public class FunctionHandler implements HttpHandler {
 
     public void handle(HttpExchange he) throws IOException {
-        String out = new FunctionRunner().exec().getContent();
+        String out = new FunctionRunner().exec(he).getContent();
         he.sendResponseHeaders(200, out.length());
         OutputStream os = he.getResponseBody();
         

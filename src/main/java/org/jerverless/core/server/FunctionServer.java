@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.jerverless.boot.config.ServerConfig;
 import org.jerverless.core.console.ServerConsole;
 
 /**
@@ -21,9 +22,11 @@ public class FunctionServer implements IFunctionServer {
     private static HttpServer serverInstance = null;
     private static FunctionServer instance = null;
     private static ServerConsole consoleInstance = null;
+    private static ServerConfig config = null;
     
     public FunctionServer(){
         try {
+            config = ServerConfig.create();
             serverInstance = HttpServer.create(new InetSocketAddress(8080), 0);
             serverInstance.setExecutor(null); // for now single threaded
             serverInstance.createContext("/function", new FunctionHandler());
@@ -35,6 +38,10 @@ public class FunctionServer implements IFunctionServer {
                     "jerverless can't bind in to given port");
             System.exit(0);
         }
+    }
+
+    public ServerConfig getConfig() {
+        return config;
     }
     
     public static FunctionServer create() {
