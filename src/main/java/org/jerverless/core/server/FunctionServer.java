@@ -27,7 +27,7 @@ public class FunctionServer implements IFunctionServer {
     public FunctionServer(){
         try {
             config = ServerConfig.create();
-            serverInstance = HttpServer.create(new InetSocketAddress(8080), 0);
+            serverInstance = HttpServer.create(new InetSocketAddress(config.getFunctionPort().getPort()), 0);
             serverInstance.setExecutor(null); // for now single threaded
             serverInstance.createContext("/function", new FunctionHandler());
             consoleInstance = ServerConsole.getInstance();

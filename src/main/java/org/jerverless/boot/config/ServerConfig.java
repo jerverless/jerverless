@@ -23,6 +23,7 @@ public class ServerConfig {
     private static Properties config = null;
     private static ServerConfig instance = null;
     private static ConfigServerlessCommand functionCommand = null;
+    private static ConfigPort functionPort = null;
 
     private ServerConfig() {
         config = new Properties();
@@ -31,12 +32,17 @@ public class ServerConfig {
             propFile = new FileInputStream(FILENAME);
             config.load(propFile);
             functionCommand = new ConfigServerlessCommand(config.getProperty("exec"));
+            functionPort = new ConfigPort();
         } catch (IOException ex) {
             Logger.getLogger(ServerConfig.class.getName()).log(Level.SEVERE, null, ex);
             System.exit(0);
         }
         
 
+    }
+
+    public ConfigPort getFunctionPort() {
+        return functionPort;
     }
     
     public static ServerConfig create() {
