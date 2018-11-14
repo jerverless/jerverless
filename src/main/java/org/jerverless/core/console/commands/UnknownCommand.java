@@ -9,17 +9,17 @@ import org.jerverless.core.console.ServerConsole;
 
 /**
  *
- * @author shalithasuranga
+ * @author ShalithaS
  */
-public class StopCommand extends ConsoleCommand {
+public class UnknownCommand extends ConsoleCommand {
 
-    public StopCommand(ServerConsole console) {
+    public UnknownCommand(ServerConsole console) {
         super(console);
     }
 
     @Override
     public void exec() {
-        consoleContext.getServerContext().stop();
+        System.out.println("ERR: Unknown command.");
     }
     
 }

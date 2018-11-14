@@ -30,7 +30,7 @@ public class FunctionServer implements IFunctionServer {
             serverInstance = HttpServer.create(new InetSocketAddress(config.getFunctionPort().getPort()), 0);
             serverInstance.setExecutor(null); // for now single threaded
             serverInstance.createContext("/function", new FunctionHandler());
-            consoleInstance = ServerConsole.getInstance();
+            consoleInstance = ServerConsole.getInstance(this);
         } catch (IOException ex) {
             Logger.getLogger(FunctionServer.class.getName()).log(Level.SEVERE, 
                     null, ex);
@@ -69,10 +69,10 @@ public class FunctionServer implements IFunctionServer {
     }
 
     public void stop() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        System.out.println("Shutting down..");
     }
 
     public void restart() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        System.out.println("Restarting..");
     }
 }
