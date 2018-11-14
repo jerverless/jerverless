@@ -1,6 +1,7 @@
 # jerverless
 Turn anything into a serverless function.. Docker ready!
 
+<img src="media/jerverless.png" align="center"/>
 
 jerverless is a serverless runner which will execute anything (binaries, commands or your scripts) as a serverless function.
 
