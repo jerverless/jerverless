@@ -32,7 +32,7 @@ public class ServerConfig {
             propFile = new FileInputStream(FILENAME);
             config.load(propFile);
             functionCommand = new ConfigServerlessCommand(config.getProperty("exec"));
-            functionPort = new ConfigPort();
+            functionPort = new ConfigPort(config.getProperty("port", "8080"));
         } catch (IOException ex) {
             Logger.getLogger(ServerConfig.class.getName()).log(Level.SEVERE, null, ex);
             System.exit(0);

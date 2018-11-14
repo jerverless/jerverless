@@ -11,6 +11,10 @@ package org.jerverless.boot.config;
  */
 public class ConfigPort extends IConfigProperty {
     private int port = 8080;
+    
+    public ConfigPort(String port) {
+        this.port = Integer.parseInt(port);
+    }
 
     public int getPort() {
         return port;
