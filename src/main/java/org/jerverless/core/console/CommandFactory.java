@@ -41,13 +41,13 @@ public class CommandFactory {
     }
     
     public ConsoleCommand make(String input) {
-        if(input.equals("restart")) {
+        if(input.equals(RestartCommand.COMMAND)) {
             return new RestartCommand(consoleContext);
         }
-        else if (input.equals("help")) {
+        else if (input.equals(HelpCommand.COMMAND)) {
             return new HelpCommand(consoleContext);
         }
-        else if (input.equals("stop")) {
+        else if (input.equals(StopCommand.COMMAND)) {
             return new StopCommand(consoleContext);
         }
         return new UnknownCommand(consoleContext);

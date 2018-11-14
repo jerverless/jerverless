@@ -29,6 +29,8 @@ import org.jerverless.core.console.ServerConsole;
  * @author ShalithaS
  */
 public class UnknownCommand extends ConsoleCommand {
+    
+    public static String COMMAND = "unknown";
 
     public UnknownCommand(ServerConsole console) {
         super(console);

@@ -35,6 +35,8 @@ public class ServerConsole {
     private static Scanner scannerInstance = null;
     private static CommandFactory commadFactory = null;
     private static FunctionServer serverContext = null;
+    private static Thread consoleThread = null;
+    private static boolean stopSig = false;
     
     public ServerConsole(FunctionServer server) {
         scannerInstance = new Scanner(System.in);
@@ -64,10 +66,10 @@ public class ServerConsole {
     
     public void openStream() {
         
-        new Thread(){
+        consoleThread = new Thread(){
             @Override
             public void run() {
-                while(true) {
+                while(!stopSig) {
                     System.out.print("> ");
                     System.out.flush();
                     String cmd = getScannerInstance().nextLine();
@@ -75,8 +77,13 @@ public class ServerConsole {
                 }
             }
             
-        }.start();
+        };
+        consoleThread.start();
         
-        
+    }
+    
+    public void closeStream() {
+        stopSig = true;
+        getScannerInstance().close();
     }
 }

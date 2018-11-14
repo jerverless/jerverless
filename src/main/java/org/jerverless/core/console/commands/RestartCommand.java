@@ -29,6 +29,8 @@ import org.jerverless.core.console.ServerConsole;
  * @author shalithasuranga
  */
 public class RestartCommand extends ConsoleCommand {
+    
+    public static String COMMAND = "restart";
 
     public RestartCommand(ServerConsole console) {
         super(console);

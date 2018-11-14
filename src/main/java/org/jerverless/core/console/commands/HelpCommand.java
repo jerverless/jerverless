@@ -30,6 +30,8 @@ import org.jerverless.core.console.ServerConsole;
  */
 public class HelpCommand extends ConsoleCommand {
 
+    public static String COMMAND = "help";
+    
     public HelpCommand(ServerConsole console) {
         super(console);
     }

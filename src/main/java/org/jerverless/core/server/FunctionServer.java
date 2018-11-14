@@ -69,8 +69,8 @@ public class FunctionServer implements IFunctionServer {
     }
     
     public void start() {
-        serverInstance.start();
-        consoleInstance.openStream();
+        getServerInstance().start();
+        getConsoleInstance().openStream();
     }
 
     public static HttpServer getServerInstance() {
@@ -87,9 +87,15 @@ public class FunctionServer implements IFunctionServer {
 
     public void stop() {
         System.out.println("Shutting down..");
+        FunctionServer.getServerInstance().stop(0);
+        FunctionServer.getConsoleInstance().closeStream();
+        System.out.println("Server stopped.");
+        System.exit(0);
+
     }
 
     public void restart() {
         System.out.println("Restarting..");
+        // TODO : Implement restart logic!
     }
 }

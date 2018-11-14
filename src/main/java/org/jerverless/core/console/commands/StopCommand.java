@@ -30,6 +30,8 @@ import org.jerverless.core.console.ServerConsole;
  */
 public class StopCommand extends ConsoleCommand {
 
+    public static String COMMAND = "stop";
+    
     public StopCommand(ServerConsole console) {
         super(console);
     }
