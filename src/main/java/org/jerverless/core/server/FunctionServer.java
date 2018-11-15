@@ -70,6 +70,7 @@ public class FunctionServer implements IFunctionServer {
     
     public void start() {
         getServerInstance().start();
+        awesomeAscii();
         getConsoleInstance().openStream();
     }
 
@@ -97,5 +98,17 @@ public class FunctionServer implements IFunctionServer {
     public void restart() {
         System.out.println("Restarting..");
         // TODO : Implement restart logic!
+    }
+    
+    public void awesomeAscii() {
+        String ascii = "   _                          _               \n" +
+                    "  (_)                        | |              \n" +
+                    "   _  ___ _ ____   _____ _ __| | ___  ___ ___ \n" +
+                    "  | |/ _ \\ '__\\ \\ / / _ \\ '__| |/ _ \\/ __/ __|\n" +
+                    "  | |  __/ |   \\ V /  __/ |  | |  __/\\__ \\__ \\\n" +
+                    "  | |\\___|_|    \\_/ \\___|_|  |_|\\___||___/___/\n" +
+                    " _/ |                                         \n" +
+                    "|__/ ";
+        System.out.println(ascii + "\n\n");
     }
 }
