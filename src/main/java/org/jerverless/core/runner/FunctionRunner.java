@@ -64,14 +64,15 @@ public class FunctionRunner implements IFunctionRunner {
         br.close();
         
         BufferedReader er = new BufferedReader(new InputStreamReader(pr.getErrorStream()));
-        if(er.lines().count() != 0) {
-            String outputErrorLine = null;
-            while((outputErrorLine = er.readLine()) != null) {
-                err.append(outputErrorLine + '\n');
-            }
-            Logger.getLogger(FunctionServer.class.getName()).log(Level.SEVERE, 
-                    err.toString());
+        
+
+        String outputErrorLine = null;
+        while((outputErrorLine = er.readLine()) != null) {
+            err.append(outputErrorLine + '\n');
         }
+        if(err.length() > 0) 
+            Logger.getLogger(FunctionServer.class.getName()).log(Level.SEVERE, 
+            err.toString());
         er.close();
 
         return new FunctionRunnerOutput(out.toString());
