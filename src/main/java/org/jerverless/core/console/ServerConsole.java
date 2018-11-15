@@ -23,6 +23,10 @@
 package org.jerverless.core.console;
 
 import java.util.Scanner;
+import org.jerverless.core.console.commands.ConsoleCommand;
+import org.jerverless.core.console.commands.HelpCommand;
+import org.jerverless.core.console.commands.RestartCommand;
+import org.jerverless.core.console.commands.StopCommand;
 import org.jerverless.core.server.FunctionServer;
 
 /**
@@ -38,15 +42,25 @@ public class ServerConsole {
     private static Thread consoleThread = null;
     private static boolean stopSig = false;
     
+    private static ConsoleCommand[] supportedCommands;
+    
     public ServerConsole(FunctionServer server) {
         scannerInstance = new Scanner(System.in);
         commadFactory = new CommandFactory(this);
         serverContext = server;
-        System.out.println(serverContext);
+        supportedCommands = new ConsoleCommand[] {
+            new StopCommand(this),
+            new RestartCommand(this),
+            new HelpCommand(this)
+        };
     }
 
     public CommandFactory getCommadFactory() {
         return commadFactory;
+    }
+
+    public ConsoleCommand[] getSupportedCommands() {
+        return supportedCommands;
     }
 
     public FunctionServer getServerContext() {
@@ -86,4 +100,5 @@ public class ServerConsole {
         stopSig = true;
         getScannerInstance().close();
     }
+    
 }

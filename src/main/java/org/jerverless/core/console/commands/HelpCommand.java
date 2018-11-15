@@ -22,6 +22,8 @@
 
 package org.jerverless.core.console.commands;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jerverless.core.console.ServerConsole;
 
 /**
@@ -31,14 +33,39 @@ import org.jerverless.core.console.ServerConsole;
 public class HelpCommand extends ConsoleCommand {
 
     public static String COMMAND = "help";
+    public static String DESC = "Display CLI manual.";
+    private static String OUT = null;
     
     public HelpCommand(ServerConsole console) {
         super(console);
     }
+    
+    private String generateOutput() {
+        if(OUT == null) {
+            OUT = "";
+            for(ConsoleCommand cmd : consoleContext.getSupportedCommands()) {
+                OUT += cmd.getCOMMAND() + "\t" + cmd.getDESC() + "\n";
+            }
+        }
+        
+        return OUT;
+    }
+
+    public String getCOMMAND() {
+        return COMMAND;
+    }
+
+    public String getDESC() {
+        return DESC;
+    }
+
+    public String getOUT() {
+        return OUT;
+    }
 
     @Override
     public void exec() {
-        System.out.println("help");
+        System.out.println(generateOutput());
     }
     
 }

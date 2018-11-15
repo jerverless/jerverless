@@ -29,8 +29,17 @@ import org.jerverless.core.console.ServerConsole;
  * @author shalithasuranga
  */
 public class StopCommand extends ConsoleCommand {
-
+    
     public static String COMMAND = "stop";
+    public static String DESC = "Stop running Function Server";
+
+    public String getCOMMAND() {
+        return COMMAND;
+    }
+
+    public String getDESC() {
+        return DESC;
+    }
     
     public StopCommand(ServerConsole console) {
         super(console);

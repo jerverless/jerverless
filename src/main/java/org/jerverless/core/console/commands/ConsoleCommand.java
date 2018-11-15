@@ -29,13 +29,16 @@ import org.jerverless.core.console.ServerConsole;
  * @author shalithasuranga
  */
 public abstract class ConsoleCommand {
-    
-    private static String COMMAND = "generic";
+
     protected ServerConsole consoleContext = null;
     
     protected ConsoleCommand(ServerConsole console) {
         this.consoleContext  = console;
     }
+    
+    public abstract String getCOMMAND();
+
+    public abstract String getDESC();
     
     public abstract void exec();
 }
