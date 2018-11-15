@@ -36,9 +36,5 @@ public abstract class ConsoleCommand {
         this.consoleContext  = console;
     }
     
-    public abstract String getCOMMAND();
-
-    public abstract String getDESC();
-    
     public abstract void exec();
 }

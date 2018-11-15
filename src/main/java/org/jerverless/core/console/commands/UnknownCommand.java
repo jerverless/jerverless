@@ -33,10 +33,6 @@ public class UnknownCommand extends ConsoleCommand {
     public static String COMMAND = "unknown";
     public static String DESC = "unknown";
 
-    public String getCOMMAND() {
-        return COMMAND;
-    }
-
     public UnknownCommand(ServerConsole console) {
         super(console);
     }
@@ -44,11 +40,6 @@ public class UnknownCommand extends ConsoleCommand {
     @Override
     public void exec() {
         System.out.println("ERR: Unknown command.");
-    }
-
-    @Override
-    public String getDESC() {
-        return DESC;
     }
     
 }

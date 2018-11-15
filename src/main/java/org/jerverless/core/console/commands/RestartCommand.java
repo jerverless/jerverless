@@ -32,14 +32,6 @@ public class RestartCommand extends ConsoleCommand {
 
     public static String COMMAND = "restart";
     public static String DESC = "Restart Function Server";
-
-    public String getCOMMAND() {
-        return COMMAND;
-    }
-
-    public String getDESC() {
-        return DESC;
-    }
     
     public RestartCommand(ServerConsole console) {
         super(console);

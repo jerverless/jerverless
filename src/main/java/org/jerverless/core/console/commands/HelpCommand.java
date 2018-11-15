@@ -34,33 +34,31 @@ public class HelpCommand extends ConsoleCommand {
 
     public static String COMMAND = "help";
     public static String DESC = "Display CLI manual.";
-    private static String OUT = null;
+    private static String Output = null;
     
     public HelpCommand(ServerConsole console) {
         super(console);
     }
     
     private String generateOutput() {
-        if(OUT == null) {
-            OUT = "";
+        if(Output == null) {
+            Output = "";
             for(ConsoleCommand cmd : consoleContext.getSupportedCommands()) {
-                OUT += cmd.getCOMMAND() + "\t" + cmd.getDESC() + "\n";
+                try {
+                    Class cmdClass = cmd.getClass();
+                    Output += cmdClass.getDeclaredField("COMMAND").get(null) + "\t" + 
+                            cmdClass.getDeclaredField("DESC").get(null) + "\n";
+                } catch (Exception ex) {
+                    Logger.getLogger(HelpCommand.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         
-        return OUT;
+        return Output;
     }
 
-    public String getCOMMAND() {
-        return COMMAND;
-    }
-
-    public String getDESC() {
-        return DESC;
-    }
-
-    public String getOUT() {
-        return OUT;
+    public String getOutput() {
+        return Output;
     }
 
     @Override
