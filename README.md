@@ -5,7 +5,7 @@ Turn anything into a serverless function.. Docker ready!
   <img src="media/jerverless.png"/>
  </div>
 <br/>
-jerverless is a serverless runner which will execute anything (binaries, commands or your scripts) as a serverless function.
+jerverless is a serverless runner which will execute anything (binaries, commands or your scripts) as a serverless function. It simply pipes http POST data into STDIN of any executable.
 
 See [examples](examples)
 
