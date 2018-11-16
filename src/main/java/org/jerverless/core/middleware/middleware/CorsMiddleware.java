@@ -20,14 +20,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-package org.jerverless.core.middleware;
+package org.jerverless.core.middleware.middleware;
 
 import com.sun.net.httpserver.HttpExchange;
+import org.jerverless.core.middleware.FunctionMiddleware;
 
 /**
  *
- * FunctionMiddleware Interface
+ * @author shalithasuranga
  */
-public interface IFunctionMiddleware {
-    public HttpExchange resolve(HttpExchange httpExchange);
+public class CorsMiddleware extends FunctionMiddleware {
+
+    @Override
+    public HttpExchange resolve(HttpExchange httpExchange) {
+        httpExchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
+        return httpExchange;
+    }
+    
 }

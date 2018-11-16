@@ -41,6 +41,7 @@ public class ServerConfig {
     private static ServerConfig instance = null;
     private static ConfigServerlessCommand functionCommand = null;
     private static ConfigPort functionPort = null;
+    private static CorsConfig corsConfig = null;
 
     private ServerConfig() {
         config = new Properties();
@@ -50,12 +51,17 @@ public class ServerConfig {
             config.load(propFile);
             functionCommand = new ConfigServerlessCommand(config.getProperty("exec"));
             functionPort = new ConfigPort(config.getProperty("port", "8080"));
+            corsConfig = new CorsConfig(config.getProperty("cors", "false"));
         } catch (IOException ex) {
             Logger.getLogger(ServerConfig.class.getName()).log(Level.SEVERE, null, ex);
             System.exit(0);
         }
         
 
+    }
+
+    public CorsConfig getCorsConfig() {
+        return corsConfig;
     }
 
     public ConfigPort getFunctionPort() {

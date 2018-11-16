@@ -23,11 +23,45 @@
 package org.jerverless.core.middleware;
 
 import com.sun.net.httpserver.HttpExchange;
+import java.util.ArrayList;
+import org.jerverless.core.middleware.middleware.CorsMiddleware;
+import org.jerverless.core.server.FunctionServer;
 
 /**
  *
- * FunctionMiddleware Interface
+ * @author shalithasuranga
  */
-public interface IFunctionMiddleware {
-    public HttpExchange resolve(HttpExchange httpExchange);
+public class MiddlewareProcessor {
+    private static MiddlewareProcessor instance = null;
+    private static ArrayList<FunctionMiddleware> middlewareList;
+    private static FunctionServer serverContext;
+
+    public MiddlewareProcessor(FunctionServer server) {
+        serverContext = server;
+        middlewareList = new ArrayList();
+        if(serverContext.getConfig().getCorsConfig().isCorsEnabled())
+            addMiddleware(new CorsMiddleware());
+        
+    }
+    
+    public void addMiddleware(FunctionMiddleware mid) {
+        middlewareList.add(mid);
+    }
+    
+    public void resolve(HttpExchange httpExchange) {
+        for(FunctionMiddleware mid : getMiddlewareList()) {
+            mid.resolve(httpExchange);
+        }
+    }
+
+    public ArrayList<FunctionMiddleware> getMiddlewareList() {
+        return middlewareList;
+    }
+    
+    public static MiddlewareProcessor getInstance(FunctionServer server) {
+        if(instance == null)
+            instance = new MiddlewareProcessor(server);
+        return instance;
+    }
+    
 }

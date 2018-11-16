@@ -26,6 +26,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.OutputStream;
+import org.jerverless.core.middleware.MiddlewareProcessor;
 import org.jerverless.core.runner.FunctionRunner;
 
 /**
@@ -36,6 +37,9 @@ public class FunctionHandler implements HttpHandler {
 
     public void handle(HttpExchange he) throws IOException {
         String out = new FunctionRunner().exec(he).getContent();
+        
+        MiddlewareProcessor.getInstance(FunctionServer.getInstance()).resolve(he);
+        
         he.sendResponseHeaders(200, out.length());
         OutputStream os = he.getResponseBody();
         

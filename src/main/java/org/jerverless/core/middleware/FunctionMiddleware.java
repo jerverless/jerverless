@@ -26,8 +26,15 @@ import com.sun.net.httpserver.HttpExchange;
 
 /**
  *
- * FunctionMiddleware Interface
+ * @author shalithasuranga
  */
-public interface IFunctionMiddleware {
-    public HttpExchange resolve(HttpExchange httpExchange);
+public abstract class FunctionMiddleware implements IFunctionMiddleware {
+
+    public FunctionMiddleware() {
+    }
+
+    public HttpExchange resolve(HttpExchange httpExchange) {
+         return httpExchange;
+    }
+    
 }

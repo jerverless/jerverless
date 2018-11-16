@@ -20,14 +20,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-package org.jerverless.core.middleware;
-
-import com.sun.net.httpserver.HttpExchange;
+package org.jerverless.boot.config;
 
 /**
  *
- * FunctionMiddleware Interface
+ * @author shalithasuranga
  */
-public interface IFunctionMiddleware {
-    public HttpExchange resolve(HttpExchange httpExchange);
+public class CorsConfig extends IConfigProperty {
+    private boolean corsEnabled;
+
+    public CorsConfig(String var) {
+        corsEnabled = var.toLowerCase().equals("true");
+    }
+
+    public boolean isCorsEnabled() {
+        return corsEnabled;
+    }
+    
+    
 }

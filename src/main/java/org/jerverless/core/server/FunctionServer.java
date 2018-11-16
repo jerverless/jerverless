@@ -30,6 +30,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jerverless.boot.config.ServerConfig;
 import org.jerverless.core.console.ServerConsole;
+import org.jerverless.core.middleware.MiddlewareProcessor;
 
 /**
  *
@@ -41,6 +42,7 @@ public class FunctionServer implements IFunctionServer {
     private static FunctionServer instance = null;
     private static ServerConsole consoleInstance = null;
     private static ServerConfig config = null;
+    private static MiddlewareProcessor middlewareProcessor = null;
     
     public FunctionServer(){
         try {
@@ -50,6 +52,8 @@ public class FunctionServer implements IFunctionServer {
             // unlimited thread pool! warn TODO : replace with fixed
             serverInstance.createContext("/function", new FunctionHandler());
             consoleInstance = ServerConsole.getInstance(this);
+            middlewareProcessor = MiddlewareProcessor.getInstance(this);
+            
         } catch (IOException ex) {
             Logger.getLogger(FunctionServer.class.getName()).log(Level.SEVERE, 
                     null, ex);
