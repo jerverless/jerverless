@@ -1,3 +1,3 @@
 
 
-print("input = " + input())
+print("input = " + raw_input())
