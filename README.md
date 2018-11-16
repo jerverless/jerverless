@@ -7,13 +7,16 @@ Turn anything into a serverless function.. Docker ready!
 <br/>
 jerverless is a serverless runner which will execute anything (binaries, commands or your scripts) as a serverless function.
 
+
+## Project Status
+
 - [x] Initial work (Structure, basic server with runner)
 - [x] Multithreaded server mode
 - [ ] Unit cases
 - [ ] CLI commands
-- [ ] Dockerfile
+- [x] Basic Samples
 - [ ] Docs
-- [ ] Release!
+- [x] Beta Release!
 
 
 # Developer Guide
