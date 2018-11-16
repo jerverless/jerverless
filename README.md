@@ -19,7 +19,7 @@ jerverless is a serverless runner which will execute anything (binaries, command
 ## Example functions
 
 - [Bash](https://github.com/shalithasuranga/jerverless/tree/master/examples/bash)
-- [Python](https://github.com/shalithasuranga/jerverless/tree/master/examples/bash)
+- [Python](https://github.com/shalithasuranga/jerverless/tree/master/examples/python)
 - Java
 - C
 - C++
