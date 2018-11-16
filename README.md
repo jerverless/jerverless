@@ -17,7 +17,7 @@ jerverless is a serverless runner which will execute anything (binaries, command
 - [x] Initial work (Structure, basic server with runner)
 - [x] Multithreaded server mode
 - [ ] Unit cases
-- [ ] CLI commands
+- [x] CLI commands
 - [x] Basic Samples
 - [ ] Docs
 - [x] Beta Release!
