@@ -7,7 +7,10 @@ Turn anything into a serverless function.. Docker ready!
 <br/>
 jerverless is a serverless runner which will execute anything (binaries, commands or your scripts) as a serverless function. It simply pipes http POST data into STDIN of any executable.
 
-See [examples](examples)
+## Example functions
+
+- [Bash](https://github.com/shalithasuranga/jerverless/tree/master/examples/bash)
+- [Python](https://github.com/shalithasuranga/jerverless/tree/master/examples/bash)
 
 ## Project Status
 
