@@ -83,11 +83,15 @@ public class ServerConsole {
         consoleThread = new Thread(){
             @Override
             public void run() {
+                System.out.print("> ");
+                System.out.flush();
                 while(!stopSig) {
-                    System.out.print("> ");
-                    System.out.flush();
-                    String cmd = getScannerInstance().nextLine();
-                    commadFactory.make(cmd).exec();
+                    if(getScannerInstance().hasNextLine()) {
+                        String cmd = getScannerInstance().nextLine();
+                        commadFactory.make(cmd).exec();
+                        System.out.print("> ");
+                        System.out.flush();
+                    }
                 }
             }
             
