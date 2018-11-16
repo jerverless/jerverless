@@ -25,6 +25,7 @@ package org.jerverless.core.server;
 import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.jerverless.boot.config.ServerConfig;
@@ -45,7 +46,8 @@ public class FunctionServer implements IFunctionServer {
         try {
             config = ServerConfig.create();
             serverInstance = HttpServer.create(new InetSocketAddress(config.getFunctionPort().getPort()), 0);
-            serverInstance.setExecutor(null); // for now single threaded
+            serverInstance.setExecutor(Executors.newCachedThreadPool()); 
+            // unlimited thread pool! warn TODO : replace with fixed
             serverInstance.createContext("/function", new FunctionHandler());
             consoleInstance = ServerConsole.getInstance(this);
         } catch (IOException ex) {
