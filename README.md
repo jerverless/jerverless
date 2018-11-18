@@ -70,7 +70,7 @@ jerverless is a serverless runner which will execute anything (binaries, command
 3. Run the app:
 
 ```
-  docker run -p 8080:8080 jerverless-py
+  docker run -it -p 8080:8080 jerverless-py
 ```
 
 4. Navigate to 'https://localhost:8080/function' in your browser.
