@@ -1,1 +1,2 @@
-print "Hello py py :D"
+name = raw_input()
+print "Hello %s!" % name
