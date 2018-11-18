@@ -49,5 +49,29 @@ jerverless is a serverless runner which will execute anything (binaries, command
 ```
 
 ```
- java -jar org.jerverless-0.0.1-SNAPSHOT.jar 
+ java -jar target/org.jerverless-0.0.1.jar 
 ```
+
+# Docker
+
+1. On your local machine, clone this repo and go to an examples directory of choice (eg: python): 
+
+```
+  git clone https://github.com/shalithasuranga/jerverless.git
+  cd jerverless/examples/python
+```
+
+2. Create the docker image:
+
+```
+  docker build -t jerverless-py .
+```
+
+3. Run the app:
+
+```
+  docker run -p 8080:8080 jerverless-py
+```
+
+4. Navigate to 'https://localhost:8080/function' in your browser.
+
