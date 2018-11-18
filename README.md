@@ -52,7 +52,7 @@ jerverless is a serverless runner which will execute anything (binaries, command
  java -jar target/org.jerverless-0.0.1.jar 
 ```
 
-# Docker
+## Docker
 
 1. On your local machine, clone this repo and go to an examples directory of choice (eg: python): 
 
