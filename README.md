@@ -64,7 +64,7 @@ jerverless is a serverless runner which will execute anything (binaries, command
 2. Create the docker image:
 
 ```
-  docker build -t jerverless-py .
+  docker build --no-cache -t jerverless-py .
 ```
 
 3. Run the app:
