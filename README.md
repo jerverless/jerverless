@@ -18,10 +18,10 @@ jerverless is a serverless runner which will execute anything (binaries, command
 
 ## Example functions
 
-- [Bash](https://github.com/shalithasuranga/jerverless/tree/master/examples/bash)
-- [Python](https://github.com/shalithasuranga/jerverless/tree/master/examples/python)
-- [Ballerina](https://github.com/shalithasuranga/jerverless/tree/master/examples/ballerina)
-- Java
+- [Bash](https://github.com/jerverless/jerverless/tree/master/examples/bash)
+- [Python](https://github.com/jerverless/jerverless/tree/master/examples/python)
+- [Java](https://github.com/jerverless/jerverless/tree/master/examples/java)
+- [Ballerina](https://github.com/jerverless/jerverless/tree/master/examples/ballerina)
 - C
 - C++
 - Node
