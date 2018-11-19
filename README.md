@@ -8,13 +8,12 @@
   [![GitHub last commit](https://img.shields.io/github/last-commit/jerverless/jerverless.svg)](https://github.com/jerverless/jerverless/commits/master)
 [![HitCount](http://hits.dwyl.io/jerverless/jerverless.svg)](http://hits.dwyl.io/jerverless/jerverless)
 
-<br/>
 Turn anything into a serverless function.. Docker ready!
-<br/>
+
 <div  align="center">
   <img src="media/jerverless.png"/>
- </div>
-<br/>
+</div>
+
 jerverless is a serverless runner which will execute anything (binaries, commands or your scripts) as a serverless function. It simply pipes http POST data into STDIN of any executable vice versa.
 
 ## Example functions
