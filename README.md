@@ -28,6 +28,70 @@ jerverless is a serverless runner which will execute anything (binaries, command
 - Go
 - C#
 
+## How to create functions?
+
+## On Machine
+
+1. Download **jar**
+```
+$ url --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.0.1/org.jerverless-0.0.1.jar > jerverless.jar
+```
+
+2. Create `jerverless.properties`
+```
+exec = python helloworld.py
+port = 8080
+```
+3. Create your program (eg:- `helloworld.py`)
+
+```python
+name = raw_input()
+print "Hello %s!" % name
+```
+4. Run it!
+
+```
+ $ java -jar target/org.jerverless-0.0.1.jar 
+```
+
+5. Test
+
+```
+$ curl -d Jerverless http://localhost:8080/function
+```
+
+Or simply use [template](https://github.com/jerverless/jerverless/examples) and jump to last step! 
+
+## Docker
+
+1. On your local machine, clone this repo and go to an examples directory of choice (eg: python): 
+
+```
+  git clone https://github.com/jerverless/jerverless.git
+  cd jerverless/examples/python
+```
+
+2. Create the docker image:
+
+```
+  docker build --no-cache -t jerverless-py .
+```
+
+3. Run the app:
+
+```
+  docker run -it -p 8080:8080 jerverless-py
+```
+
+4. Navigate to 'https://localhost:8080/function' in your browser.
+
+## Kubernetes
+
+1. Create docker image for your function and push to dockerhub
+2. Add docker image to `.yml` deployment
+
+
+
 ## Project Status
 
 - [x] Initial work (Structure, basic server with runner)
@@ -52,27 +116,4 @@ jerverless is a serverless runner which will execute anything (binaries, command
 ```
  java -jar target/org.jerverless-0.0.1.jar 
 ```
-
-## Docker
-
-1. On your local machine, clone this repo and go to an examples directory of choice (eg: python): 
-
-```
-  git clone https://github.com/jerverless/jerverless.git
-  cd jerverless/examples/python
-```
-
-2. Create the docker image:
-
-```
-  docker build --no-cache -t jerverless-py .
-```
-
-3. Run the app:
-
-```
-  docker run -it -p 8080:8080 jerverless-py
-```
-
-4. Navigate to 'https://localhost:8080/function' in your browser.
 
