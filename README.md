@@ -20,6 +20,7 @@ jerverless is a serverless runner which will execute anything (binaries, command
 
 - [Bash](https://github.com/shalithasuranga/jerverless/tree/master/examples/bash)
 - [Python](https://github.com/shalithasuranga/jerverless/tree/master/examples/python)
+- [Ballerina](https://github.com/shalithasuranga/jerverless/tree/master/examples/ballerina)
 - Java
 - C
 - C++
