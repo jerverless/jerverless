@@ -49,13 +49,13 @@ cors = true
 name = raw_input()
 print "Hello %s!" % name
 ```
-4. Run it!
+4. Start server!
 
 ```
- $ java -jar target/org.jerverless-0.0.1.jar 
+ $ java -jar org.jerverless-0.0.1.jar 
 ```
 
-5. Test
+5. Test it!
 
 ```
 $ curl -d Jerverless http://localhost:8080/function
@@ -90,7 +90,7 @@ Or simply use [template](https://github.com/jerverless/jerverless/examples) and 
 
 1. Create docker image for your function and push to dockerhub
 
-2. Add docker image to `.yml` deployment
+2. Add docker image name to `.yml` deployment
 
 
 
