@@ -30,7 +30,7 @@ jerverless is a serverless runner which will execute anything (binaries, command
 
 ## How to create functions?
 
-## On Machine
+### On Machine (or VM)
 
 1. Download **jar**
 ```
@@ -41,6 +41,7 @@ $ url --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.0.1
 ```
 exec = python helloworld.py
 port = 8080
+cors = true
 ```
 3. Create your program (eg:- `helloworld.py`)
 
@@ -62,7 +63,7 @@ $ curl -d Jerverless http://localhost:8080/function
 
 Or simply use [template](https://github.com/jerverless/jerverless/examples) and jump to last step! 
 
-## Docker
+### Docker
 
 1. On your local machine, clone this repo and go to an examples directory of choice (eg: python): 
 
@@ -85,9 +86,10 @@ Or simply use [template](https://github.com/jerverless/jerverless/examples) and 
 
 4. Navigate to 'https://localhost:8080/function' in your browser.
 
-## Kubernetes
+### Kubernetes
 
 1. Create docker image for your function and push to dockerhub
+
 2. Add docker image to `.yml` deployment
 
 
@@ -99,7 +101,7 @@ Or simply use [template](https://github.com/jerverless/jerverless/examples) and 
 - [ ] Unit cases
 - [x] CLI commands
 - [x] Basic Samples
-- [ ] Docs
+- [x] Docs
 - [x] Beta Release!
 
 
