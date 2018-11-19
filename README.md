@@ -1,7 +1,11 @@
 <div align="center">
    <img src="media/jerverless_logo.png">
 </div>
-
+[![GitHub license](https://img.shields.io/github/license/jerverless/jerverless.svg)](https://github.com/jerverless/jerverless/blob/master/LICENSE)
+ [![GitHub (pre-)release](https://img.shields.io/github/release/jerverless/jerverless/all.svg)](https://github.com/jerverless/jerverless/releases)
+  [![GitHub last commit](https://img.shields.io/github/last-commit/jerverless/jerverless.svg)](https://github.com/jerverless/jerverless/commits/master)
+[![HitCount](http://hits.dwyl.io/jerverless/jerverless.svg)](http://hits.dwyl.io/jerverless/jerverless)
+<br/>
 Turn anything into a serverless function.. Docker ready!
 <br/>
 <div  align="center">
