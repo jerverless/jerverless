@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div align="center">
    <img src="media/jerverless_logo.png">
 </div>
 
