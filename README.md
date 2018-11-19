@@ -58,7 +58,7 @@ jerverless is a serverless runner which will execute anything (binaries, command
 1. On your local machine, clone this repo and go to an examples directory of choice (eg: python): 
 
 ```
-  git clone https://github.com/shalithasuranga/jerverless.git
+  git clone https://github.com/jerverless/jerverless.git
   cd jerverless/examples/python
 ```
 
