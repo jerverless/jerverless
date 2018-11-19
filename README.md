@@ -1,13 +1,7 @@
-```
-   _                          _               
-  (_)                        | |              
-   _  ___ _ ____   _____ _ __| | ___  ___ ___ 
-  | |/ _ \ '__\ \ / / _ \ '__| |/ _ \/ __/ __|
-  | |  __/ |   \ V /  __/ |  | |  __/\__ \__ \
-  | |\___|_|    \_/ \___|_|  |_|\___||___/___/
- _/ |                                         
-|__/                                          
-```
+<div style="align">
+   <img src="media/jerverless_logo.png">
+</div>
+
 Turn anything into a serverless function.. Docker ready!
 <br/>
 <div  align="center">
