@@ -42,7 +42,7 @@ See more info,
 
 1. Download **jar**
 ```
-$ url --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.0.1/org.jerverless-0.0.1.jar > jerverless.jar
+$ curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.0.1/org.jerverless-0.0.1.jar > jerverless.jar
 ```
 
 2. Create `jerverless.properties`
