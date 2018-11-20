@@ -19,6 +19,11 @@ jerverless is a serverless runner which will execute anything (binaries, command
 </div>
 
 
+See more info,
+
+- [A friendly introduction to Serverless Architecture and Why we built jerverless?](https://medium.com/@shalithasuranga/a-friendly-introduction-to-serverless-architecture-and-why-we-built-jerverless-runtime-4c09e7d81e56)
+
+
 ## Example functions
 
 - [Bash](https://github.com/jerverless/jerverless/tree/master/examples/bash)
