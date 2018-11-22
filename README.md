@@ -42,7 +42,7 @@ See more info,
 
 1. Download **jar**
 ```
-$ curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.0.1/org.jerverless-0.0.1.jar > jerverless.jar
+ $ curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.0.1/org.jerverless-0.0.1.jar > jerverless.jar
 ```
 
 2. Create `jerverless.properties`
@@ -66,7 +66,7 @@ print "Hello %s!" % name
 5. Test it!
 
 ```
-$ curl -d Jerverless http://localhost:8080/function
+ $ curl -d Jerverless http://localhost:8080/function
 ```
 
 Or simply use [template](https://github.com/jerverless/jerverless/examples) and jump to last step! 
@@ -76,20 +76,20 @@ Or simply use [template](https://github.com/jerverless/jerverless/examples) and 
 1. On your local machine, clone this repo and go to an examples directory of choice (eg: python): 
 
 ```
-  git clone https://github.com/jerverless/jerverless.git
-  cd jerverless/examples/python
+ $ git clone https://github.com/jerverless/jerverless.git
+ $ cd jerverless/examples/python
 ```
 
 2. Create the docker image:
 
 ```
-  docker build --no-cache -t jerverless-py .
+ $ docker build --no-cache -t jerverless-py .
 ```
 
 3. Run the app:
 
 ```
-  docker run -it -p 8080:8080 jerverless-py
+ $ docker run -it -p 8080:8080 jerverless-py
 ```
 
 4. Navigate to 'https://localhost:8080/function' in your browser.
@@ -116,14 +116,14 @@ Or simply use [template](https://github.com/jerverless/jerverless/examples) and 
 # Developer Guide
 
 ```bash
- git clone <forked_url>
+ $ git clone <forked_url>
 ```
 
 ```bash
- mvn clean package
+ $ mvn clean package
 ```
 
 ```
- java -jar target/org.jerverless-0.0.1.jar 
+ $ java -jar target/org.jerverless-0.0.1.jar 
 ```
 
