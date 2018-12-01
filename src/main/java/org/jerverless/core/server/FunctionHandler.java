@@ -46,8 +46,8 @@ public class FunctionHandler implements HttpHandler {
         
         os.write(out.getBytes());
         os.close();
+       
         
-                
     }
     
 }
