@@ -54,7 +54,6 @@ public class ServerConfig {
             functionPort = new ConfigPort(config.getProperty("port", "8080"));
             corsConfig = new CorsConfig(config.getProperty("cors", "false"));
             typeConfig = new TypeConfig(config.getProperty("type", "text/plain"));
-            System.out.println(typeConfig.getContentType());
         } catch (IOException ex) {
             Logger.getLogger(ServerConfig.class.getName()).log(Level.SEVERE, null, ex);
             System.exit(0);
