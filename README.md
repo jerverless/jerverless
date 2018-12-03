@@ -42,7 +42,7 @@ See more info,
 
 1. Download **jar**
 ```
- $ curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.0.1/org.jerverless-0.0.1.jar > jerverless.jar
+ $ curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.1.0/org.jerverless-0.1.0.jar > jerverless.jar
 ```
 
 2. Create `jerverless.properties`
@@ -60,7 +60,7 @@ print "Hello %s!" % name
 4. Start server!
 
 ```
- $ java -jar org.jerverless-0.0.1.jar 
+ $ java -jar org.jerverless-0.1.0.jar 
 ```
 
 5. Test it!
@@ -124,6 +124,6 @@ Or simply use [template](https://github.com/jerverless/jerverless/examples) and 
 ```
 
 ```
- $ java -jar target/org.jerverless-0.0.1.jar 
+ $ java -jar target/org.jerverless-0.1.0.jar 
 ```
 
