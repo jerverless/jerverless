@@ -30,10 +30,10 @@ See more info,
 - [Python](https://github.com/jerverless/jerverless/tree/master/examples/python)
 - [Java](https://github.com/jerverless/jerverless/tree/master/examples/java)
 - [Ballerina](https://github.com/jerverless/jerverless/tree/master/examples/ballerina)
-- C
+- [C](https://github.com/jerverless/jerverless/tree/master/examples/c)
 - C++
 - Node
-- Go
+- [Go](https://github.com/jerverless/jerverless/tree/master/examples/golang)
 - C#
 
 ## How to create functions?
