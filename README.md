@@ -31,7 +31,7 @@ See more info,
 - [Java](https://github.com/jerverless/jerverless/tree/master/examples/java)
 - [Ballerina](https://github.com/jerverless/jerverless/tree/master/examples/ballerina)
 - [C](https://github.com/jerverless/jerverless/tree/master/examples/c)
-- C++
+- [C++](https://github.com/jerverless/jerverless/tree/master/examples/cpp)
 - Node
 - [Go](https://github.com/jerverless/jerverless/tree/master/examples/golang)
 - C#
