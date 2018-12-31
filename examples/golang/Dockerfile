@@ -5,7 +5,7 @@ RUN curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.
     && chmod +x jerverless.jar \
     && apt-get update \
     && apt-get -y install golang-go \
-    && go build -o app helloworld.go
-
+    && go build -o app helloworld.go \
+    && chmod +x app
 
 ENTRYPOINT ["java", "-jar", "jerverless.jar"]
