@@ -5,4 +5,5 @@ RUN curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.
     && chmod +x jerverless.jar \
     && apt-get update \
     && apt-get install build-essential
+    && gcc hello.c -o hello
 ENTRYPOINT ["java", "-jar", "jerverless.jar"]
