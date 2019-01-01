@@ -34,7 +34,7 @@ See more info,
 - [C++](https://github.com/jerverless/jerverless/tree/master/examples/cpp)
 - [Node](https://github.com/jerverless/jerverless/tree/master/examples/node)
 - [Go](https://github.com/jerverless/jerverless/tree/master/examples/golang)
-- C#
+- [Ruby](https://github.com/jerverless/jerverless/tree/master/examples/ruby)
 
 ## How to create functions?
 
