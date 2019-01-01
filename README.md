@@ -32,7 +32,7 @@ See more info,
 - [Ballerina](https://github.com/jerverless/jerverless/tree/master/examples/ballerina)
 - [C](https://github.com/jerverless/jerverless/tree/master/examples/c)
 - [C++](https://github.com/jerverless/jerverless/tree/master/examples/cpp)
-- Node
+- [Node](https://github.com/jerverless/jerverless/tree/master/examples/node)
 - [Go](https://github.com/jerverless/jerverless/tree/master/examples/golang)
 - C#
 
