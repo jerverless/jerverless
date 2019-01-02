@@ -127,3 +127,7 @@ Or simply use [template](https://github.com/jerverless/jerverless/examples) and 
  $ java -jar target/org.jerverless-0.1.0.jar 
 ```
 
+## Become a committer 
+
+Submit a pull request or raise 3 helpful issues to join jerverless Team!
+
