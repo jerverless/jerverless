@@ -35,6 +35,7 @@ See more info,
 - [Node](https://github.com/jerverless/jerverless/tree/master/examples/node)
 - [Go](https://github.com/jerverless/jerverless/tree/master/examples/golang)
 - [Ruby](https://github.com/jerverless/jerverless/tree/master/examples/ruby)
+- [Rust](https://github.com/jerverless/jerverless/tree/master/examples/rust)
 
 ## How to create functions?
 
