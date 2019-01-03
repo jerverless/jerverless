@@ -36,6 +36,7 @@ See more info,
 - [Go](https://github.com/jerverless/jerverless/tree/master/examples/golang)
 - [Ruby](https://github.com/jerverless/jerverless/tree/master/examples/ruby)
 - [Rust](https://github.com/jerverless/jerverless/tree/master/examples/rust)
+- [php](https://github.com/jerverless/jerverless/tree/master/examples/php)
 
 ## How to create functions?
 
