@@ -37,6 +37,7 @@ See more info,
 - [Ruby](https://github.com/jerverless/jerverless/tree/master/examples/ruby)
 - [Rust](https://github.com/jerverless/jerverless/tree/master/examples/rust)
 - [php](https://github.com/jerverless/jerverless/tree/master/examples/php)
+- [powershell](https://github.com/jerverless/jerverless/tree/master/examples/powershell)
 
 ## How to create functions?
 
