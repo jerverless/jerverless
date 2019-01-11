@@ -2,7 +2,6 @@
 .gradle
 build
 
-
 # IntelliJ
 .idea
 out
@@ -15,3 +14,5 @@ out
 
 # Eclipse
 .settings
+.classpath
+.project
