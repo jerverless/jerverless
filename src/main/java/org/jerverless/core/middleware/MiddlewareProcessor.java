@@ -39,7 +39,7 @@ public final class MiddlewareProcessor {
 
     public MiddlewareProcessor(FunctionServer server) {
         serverContext = server;
-        middlewareList = new ArrayList();
+        middlewareList = new ArrayList<>();
         if(serverContext.getConfig().getCorsConfig().isCorsEnabled())
             addMiddleware(new CorsMiddleware());
         addMiddleware(new ContentTypeMiddleware(serverContext.getConfig().getTypeConfig()));

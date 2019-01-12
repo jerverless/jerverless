@@ -1,0 +1,25 @@
+// gradle build script
+
+group = 'org.jerverless'
+version = '0.1.0'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.jerverless.boot.BootServer'
+    }
+}
+
+application {
+    mainClassName = "org.jerverless.boot.BootServer"
+}
