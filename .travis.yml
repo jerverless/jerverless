@@ -21,10 +21,6 @@ cache:
     - "$HOME/.gradle/caches/"
     - "$HOME/.gradle/wrapper/"
 
-script:
-  - "./gradlew assemble"
-  - "./gradlew clean check -Dmockserver.logLevel=ERROR"
-
 branches:
   except:
     - gh-pages
