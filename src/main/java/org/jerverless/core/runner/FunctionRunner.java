@@ -53,8 +53,9 @@ public class FunctionRunner implements IFunctionRunner {
         }
         httpPostData.close();
 
+        String postDataTmp = post.toString();
         post.setLength(0);
-        post.append(InputMapperProcessor.getInstance(FunctionServer.getInstance()).apply("x"));
+        post.append(InputMapperProcessor.getInstance(FunctionServer.getInstance()).apply(postDataTmp));
 
         Process pr = runtime.exec(FunctionServer.getInstance().getConfig().getFunctionCommand().getCommands());
         pr.getOutputStream().write(post.toString().getBytes());

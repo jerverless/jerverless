@@ -1,5 +1,6 @@
 package org.jerverless.core.mappers.inputmappers;
 
+import org.jerverless.core.mappers.inputmappers.mappers.DefaultInputMapper;
 import org.jerverless.core.mappers.inputmappers.mappers.InputMapper;
 import org.jerverless.core.server.FunctionServer;
 
@@ -13,6 +14,7 @@ public class InputMapperProcessor implements IInputMapperProcessor {
     private InputMapperProcessor(FunctionServer server) {
         serverContext = server;
         inputMappers = new ArrayList();
+        addInputMapper(new DefaultInputMapper());
     }
 
     public static InputMapperProcessor getInstance(FunctionServer server) {
