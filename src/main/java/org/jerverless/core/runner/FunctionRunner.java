@@ -30,6 +30,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.jerverless.core.mappers.inputmappers.InputMapperProcessor;
 import org.jerverless.core.server.FunctionServer;
 
 /**
@@ -50,7 +52,11 @@ public class FunctionRunner implements IFunctionRunner {
             post.append(postLine);
         }
         httpPostData.close();
-        
+
+        String postDataTmp = post.toString();
+        post.setLength(0);
+        post.append(InputMapperProcessor.getInstance(FunctionServer.getInstance()).apply(postDataTmp));
+
         Process pr = runtime.exec(FunctionServer.getInstance().getConfig().getFunctionCommand().getCommands());
         pr.getOutputStream().write(post.toString().getBytes());
         pr.getOutputStream().close();
