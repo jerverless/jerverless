@@ -55,8 +55,8 @@ public class ServerConsole {
         };
     }
 
-    public CommandFactory getCommadFactory() {
-        return commadFactory;
+    public CommandFactory getCommandFactory() {
+        return commandFactory;
     }
 
     public ConsoleCommand[] getSupportedCommands() {
