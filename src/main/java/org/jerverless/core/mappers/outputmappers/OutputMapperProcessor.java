@@ -13,7 +13,7 @@ public class OutputMapperProcessor implements IOutputMapperProcessor {
 
     private OutputMapperProcessor(FunctionServer server) {
         serverContext = server;
-        outputMappers = new ArrayList();
+        outputMappers = new ArrayList<>();
         addOutputMapper(new DefaultOutputMapper());
     }
 
