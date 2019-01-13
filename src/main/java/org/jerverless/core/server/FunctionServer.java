@@ -31,6 +31,8 @@ import java.util.logging.Logger;
 import org.jerverless.boot.config.ServerConfig;
 import org.jerverless.core.console.ServerConsole;
 import org.jerverless.core.mappers.inputmappers.InputMapperProcessor;
+import org.jerverless.core.mappers.outputmappers.OutputMapperProcessor;
+import org.jerverless.core.mappers.outputmappers.mappers.OutputMapper;
 import org.jerverless.core.middleware.MiddlewareProcessor;
 
 /**
@@ -45,6 +47,7 @@ public class FunctionServer implements IFunctionServer {
     private static ServerConfig config = null;
     private static MiddlewareProcessor middlewareProcessor = null;
     private static InputMapperProcessor inputMapperProcessor = null;
+    private static OutputMapperProcessor outputMapperProcessor = null;
     
     public FunctionServer(){
         try {
@@ -56,6 +59,7 @@ public class FunctionServer implements IFunctionServer {
             consoleInstance = ServerConsole.getInstance(this);
             middlewareProcessor = MiddlewareProcessor.getInstance(this);
             inputMapperProcessor = InputMapperProcessor.getInstance(this);
+            outputMapperProcessor = OutputMapperProcessor.getInstance(this);
             
         } catch (IOException ex) {
             Logger.getLogger(FunctionServer.class.getName()).log(Level.SEVERE, 

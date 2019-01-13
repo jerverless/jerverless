@@ -32,6 +32,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.jerverless.core.mappers.inputmappers.InputMapperProcessor;
+import org.jerverless.core.mappers.outputmappers.OutputMapperProcessor;
 import org.jerverless.core.server.FunctionServer;
 
 /**
@@ -45,6 +46,7 @@ public class FunctionRunner implements IFunctionRunner {
         StringBuilder err = new StringBuilder();
         StringBuilder post = new StringBuilder();
         Runtime runtime = Runtime.getRuntime();
+        String outData = "";
         
         BufferedReader httpPostData = new BufferedReader(new InputStreamReader(he.getRequestBody()));
         String postLine = null;
@@ -81,7 +83,8 @@ public class FunctionRunner implements IFunctionRunner {
             err.toString());
         er.close();
 
-        return new FunctionRunnerOutput(out.toString());
+        outData = OutputMapperProcessor.getInstance(FunctionServer.getInstance()).apply(out.toString());
+        return new FunctionRunnerOutput(outData);
     }
     
 }
