@@ -13,7 +13,7 @@ public class InputMapperProcessor implements IInputMapperProcessor {
 
     private InputMapperProcessor(FunctionServer server) {
         serverContext = server;
-        inputMappers = new ArrayList();
+        inputMappers = new ArrayList<>();
         addInputMapper(new DefaultInputMapper());
     }
 
