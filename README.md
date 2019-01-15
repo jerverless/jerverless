@@ -46,7 +46,7 @@ See more info,
 
 1. Download **jar**
 ```
- $ curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.1.0/org.jerverless-0.1.0.jar > jerverless.jar
+ $ curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v1.0.0/jerverless-1.0.0.jar > jerverless.jar
 ```
 
 2. Create `jerverless.properties`
@@ -64,7 +64,7 @@ print "Hello %s!" % name
 4. Start server!
 
 ```
- $ java -jar org.jerverless-0.1.0.jar 
+ $ java -jar jerverless-1.0.0.jar
 ```
 
 5. Test it!
@@ -143,7 +143,7 @@ This command will download and install gradle, then it will build the jar file.
 The resulted jar file can be found in `build/libs`
 
 ```
- $ java -jar build/libs/jerverless-0.1.0.jar 
+ $ java -jar build/libs/jerverless-1.0.0.jar
 ```
 
 Or run 
