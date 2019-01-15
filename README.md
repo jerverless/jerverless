@@ -64,7 +64,7 @@ print "Hello %s!" % name
 4. Start server!
 
 ```
- $ java -jar jerverless-1.0.0.jar
+ $ java -jar jerverless.jar
 ```
 
 5. Test it!
@@ -73,7 +73,7 @@ print "Hello %s!" % name
  $ curl -d Jerverless http://localhost:8080/function
 ```
 
-Or simply use [template](https://github.com/jerverless/jerverless/examples) and jump to last step! 
+Or simply use [template](https://github.com/jerverless/jerverless/tree/master/examples) and jump to last step! 
 
 ### Docker
 
