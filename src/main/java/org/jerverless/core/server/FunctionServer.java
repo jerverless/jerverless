@@ -28,6 +28,8 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.jerverless.boot.config.ConfigServerlessCommand;
 import org.jerverless.boot.config.ServerConfig;
 import org.jerverless.core.console.ServerConsole;
 import org.jerverless.core.mappers.inputmappers.InputMapperProcessor;
@@ -55,7 +57,10 @@ public class FunctionServer implements IFunctionServer {
             serverInstance = HttpServer.create(new InetSocketAddress(config.getFunctionPort().getPort()), 0);
             serverInstance.setExecutor(Executors.newCachedThreadPool()); 
             // unlimited thread pool! warn TODO : replace with fixed
-            serverInstance.createContext("/function", new FunctionHandler());
+            for(ConfigServerlessCommand commandConfig : config.getRoutesConfig().getRoutes()) {
+                serverInstance.createContext( commandConfig.getEndpoint(), new FunctionHandler(commandConfig));
+            }
+
             consoleInstance = ServerConsole.getInstance(this);
             middlewareProcessor = MiddlewareProcessor.getInstance(this);
             inputMapperProcessor = InputMapperProcessor.getInstance(this);

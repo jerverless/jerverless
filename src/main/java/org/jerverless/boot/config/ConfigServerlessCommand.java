@@ -27,13 +27,17 @@ package org.jerverless.boot.config;
  * @author shalithasuranga
  */
 public class ConfigServerlessCommand extends IConfigProperty {
+    private String endpoint;
     private String[] commands;
     
-    public ConfigServerlessCommand(String commandSet) {
+    public ConfigServerlessCommand(String endpoint, String commandSet) {
+        this.endpoint = endpoint;
         this.commands = commandSet.split(" ");
     }
 
     public String[] getCommands() {
         return commands;
     }
+
+    public String getEndpoint() {return endpoint; }
 }

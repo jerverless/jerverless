@@ -26,6 +26,8 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import org.jerverless.boot.config.ConfigServerlessCommand;
 import org.jerverless.core.middleware.MiddlewareProcessor;
 import org.jerverless.core.runner.FunctionRunner;
 
@@ -35,8 +37,14 @@ import org.jerverless.core.runner.FunctionRunner;
  */
 public class FunctionHandler implements HttpHandler {
 
+    private ConfigServerlessCommand commandConfig = null;
+
+    public FunctionHandler(ConfigServerlessCommand commandConfig) {
+        this.commandConfig = commandConfig;
+    }
+
     public void handle(HttpExchange he) throws IOException {
-        String out = new FunctionRunner().exec(he).getContent();
+        String out = new FunctionRunner(commandConfig).exec(he).getContent();
         
         MiddlewareProcessor.getInstance(FunctionServer.getInstance()).resolve(he);
         

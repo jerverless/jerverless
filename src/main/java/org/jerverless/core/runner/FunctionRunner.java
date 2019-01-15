@@ -31,6 +31,7 @@ import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.jerverless.boot.config.ConfigServerlessCommand;
 import org.jerverless.core.mappers.inputmappers.InputMapperProcessor;
 import org.jerverless.core.mappers.outputmappers.OutputMapperProcessor;
 import org.jerverless.core.server.FunctionServer;
@@ -40,6 +41,12 @@ import org.jerverless.core.server.FunctionServer;
  * @author shalithasuranga
  */
 public class FunctionRunner implements IFunctionRunner {
+
+    private ConfigServerlessCommand commandConfig = null;
+
+    public FunctionRunner (ConfigServerlessCommand commandConfig) {
+        this.commandConfig = commandConfig;
+    }
 
     public FunctionRunnerResponse exec(HttpExchange he) throws IOException {
         StringBuilder out = new StringBuilder();
@@ -59,7 +66,7 @@ public class FunctionRunner implements IFunctionRunner {
         post.setLength(0);
         post.append(InputMapperProcessor.getInstance(FunctionServer.getInstance()).apply(postDataTmp));
 
-        Process pr = runtime.exec(FunctionServer.getInstance().getConfig().getFunctionCommand().getCommands());
+        Process pr = runtime.exec(commandConfig.getCommands());
         pr.getOutputStream().write(post.toString().getBytes());
         pr.getOutputStream().close();
         

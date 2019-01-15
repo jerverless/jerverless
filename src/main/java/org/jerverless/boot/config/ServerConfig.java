@@ -39,7 +39,7 @@ public class ServerConfig {
     private static final String FILENAME = "jerverless.properties";
     private static Properties config = null;
     private static ServerConfig instance = null;
-    private static ConfigServerlessCommand functionCommand = null;
+    private static RoutesConfig routesConfig = null;
     private static ConfigPort functionPort = null;
     private static CorsConfig corsConfig = null;
     private static TypeConfig typeConfig = null;
@@ -50,7 +50,7 @@ public class ServerConfig {
         try {
             propFile = new FileInputStream(FILENAME);
             config.load(propFile);
-            functionCommand = new ConfigServerlessCommand(config.getProperty("exec"));
+            routesConfig = RoutesConfig.create(config);
             functionPort = new ConfigPort(config.getProperty("port", "8080"));
             corsConfig = new CorsConfig(config.getProperty("cors", "false"));
             typeConfig = new TypeConfig(config.getProperty("type", "text/plain"));
@@ -81,8 +81,8 @@ public class ServerConfig {
         return instance;
     }
 
-    public ConfigServerlessCommand getFunctionCommand() {
-        return functionCommand;
+    public RoutesConfig getRoutesConfig() {
+        return routesConfig;
     }
 
     
