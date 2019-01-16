@@ -14,6 +14,14 @@ repositories {
     mavenCentral()
 }
 
+dependencies{
+    // https://mvnrepository.com/artifact/org.yaml/snakeyaml
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.8'
+
+    // https://mvnrepository.com/artifact/junit/junit
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
 jar {
     manifest {
         attributes 'Main-Class': 'org.jerverless.boot.BootServer'
