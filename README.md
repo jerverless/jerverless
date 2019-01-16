@@ -46,12 +46,12 @@ See more info,
 
 1. Download **jar**
 ```
- $ curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.1.0/org.jerverless-0.1.0.jar > jerverless.jar
+ $ curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v1.0.0/jerverless-1.0.0.jar > jerverless.jar
 ```
 
 2. Create `jerverless.properties`
 ```
-exec = python helloworld.py
+/function = python helloworld.py
 port = 8080
 cors = true
 ```
@@ -64,7 +64,7 @@ print "Hello %s!" % name
 4. Start server!
 
 ```
- $ java -jar org.jerverless-0.1.0.jar 
+ $ java -jar jerverless.jar
 ```
 
 5. Test it!
@@ -73,7 +73,7 @@ print "Hello %s!" % name
  $ curl -d Jerverless http://localhost:8080/function
 ```
 
-Or simply use [template](https://github.com/jerverless/jerverless/examples) and jump to last step! 
+Or simply use [template](https://github.com/jerverless/jerverless/tree/master/examples) and jump to last step! 
 
 ### Docker
 
@@ -143,7 +143,7 @@ This command will download and install gradle, then it will build the jar file.
 The resulted jar file can be found in `build/libs`
 
 ```
- $ java -jar build/libs/jerverless-0.1.0.jar 
+ $ java -jar build/libs/jerverless-1.0.0.jar
 ```
 
 Or run 
