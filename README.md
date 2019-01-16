@@ -51,7 +51,7 @@ See more info,
 
 2. Create `jerverless.properties`
 ```
-exec = python helloworld.py
+/function = python helloworld.py
 port = 8080
 cors = true
 ```
