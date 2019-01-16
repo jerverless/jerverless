@@ -21,7 +21,5 @@ public class BootServer {
     public static void main(String[] args) {
         System.out.println("Bootstrapping server...");
         FunctionServer.create().start();
-        
-        
     }
 }
