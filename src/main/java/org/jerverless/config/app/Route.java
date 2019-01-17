@@ -1,20 +1,23 @@
-package org.jerverless.config;
+package org.jerverless.config.app;
 
-public class Endpoint {
-    private String route;
+/**
+ * @author Kasun Vithanage
+ */
+public class Route {
+    private String endpoint;
     private String command;
 
-    private String method;
-    private String contentType;
+    // TODO need validators
+    private String method = "POST";
+    private String contentType = "text/html";
     private String cors;
-    private String arguments;
 
-    public String getRoute() {
-        return route;
+    public String getEndpoint() {
+        return endpoint;
     }
 
-    public void setRoute(String route) {
-        this.route = route;
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
     }
 
     public String getMethod() {
@@ -33,14 +36,6 @@ public class Endpoint {
         this.contentType = contentType;
     }
 
-    public String getCors() {
-        return cors;
-    }
-
-    public void setCors(String cors) {
-        this.cors = cors;
-    }
-
     public String getCommand() {
         return command;
     }
@@ -49,23 +44,26 @@ public class Endpoint {
         this.command = command;
     }
 
-    public String getArguments() {
-        return arguments;
+    public String[] getCommandToArray() {
+        return command.split(" ");
     }
 
-    public void setArguments(String arguments) {
-        this.arguments = arguments;
+    public String getCors() {
+        return cors;
+    }
+
+    public void setCors(String cors) {
+        this.cors = cors;
     }
 
     @Override
     public String toString() {
-        return "Endpoint{" +
-                "route='" + route + '\'' +
+        return "Route{" +
+                "endpoint='" + endpoint + '\'' +
+                ", command='" + command + '\'' +
                 ", method='" + method + '\'' +
                 ", contentType='" + contentType + '\'' +
                 ", cors='" + cors + '\'' +
-                ", command='" + command + '\'' +
-                ", arguments='" + arguments + '\'' +
                 '}';
     }
 }

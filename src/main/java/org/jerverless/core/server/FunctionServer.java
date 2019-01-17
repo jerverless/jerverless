@@ -23,67 +23,65 @@
 package org.jerverless.core.server;
 
 import com.sun.net.httpserver.HttpServer;
+import org.jerverless.config.app.AppConfig;
+import org.jerverless.config.app.Route;
+import org.jerverless.core.console.ServerConsole;
+import org.jerverless.core.mappers.inputmappers.InputMapperProcessor;
+import org.jerverless.core.mappers.outputmappers.OutputMapperProcessor;
+import org.jerverless.core.middleware.MiddlewareProcessor;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.jerverless.boot.config.ConfigServerlessCommand;
-import org.jerverless.boot.config.ServerConfig;
-import org.jerverless.core.console.ServerConsole;
-import org.jerverless.core.mappers.inputmappers.InputMapperProcessor;
-import org.jerverless.core.mappers.outputmappers.OutputMapperProcessor;
-import org.jerverless.core.mappers.outputmappers.mappers.OutputMapper;
-import org.jerverless.core.middleware.MiddlewareProcessor;
-
 /**
  *
  * @author shalithasuranga
  */
 public class FunctionServer implements IFunctionServer {
-    
+    public final static String DEFAULT_CONFIG = "jerverless.yml";
+
     private static HttpServer serverInstance = null;
     private static FunctionServer instance = null;
     private static ServerConsole consoleInstance = null;
-    private static ServerConfig config = null;
-    private static MiddlewareProcessor middlewareProcessor = null;
+
+
     private static InputMapperProcessor inputMapperProcessor = null;
     private static OutputMapperProcessor outputMapperProcessor = null;
-    
-    public FunctionServer(){
+
+    private MiddlewareProcessor middlewareProcessor;
+
+    private AppConfig appConfig = null;
+
+    public FunctionServer(AppConfig appConfig) {
         try {
-            config = ServerConfig.create();
-            serverInstance = HttpServer.create(new InetSocketAddress(config.getFunctionPort().getPort()), 0);
+            this.appConfig = appConfig;
+            middlewareProcessor = new MiddlewareProcessor(this.appConfig);
+
+            serverInstance = HttpServer.create(new InetSocketAddress(this.appConfig.getPort()), 0);
             serverInstance.setExecutor(Executors.newCachedThreadPool()); 
             // unlimited thread pool! warn TODO : replace with fixed
-            for(ConfigServerlessCommand commandConfig : config.getRoutesConfig().getRoutes()) {
-                serverInstance.createContext( commandConfig.getEndpoint(), new FunctionHandler(commandConfig));
-            }
 
             consoleInstance = ServerConsole.getInstance(this);
-            middlewareProcessor = MiddlewareProcessor.getInstance(this);
             inputMapperProcessor = InputMapperProcessor.getInstance(this);
             outputMapperProcessor = OutputMapperProcessor.getInstance(this);
-            
+
+            for (Route route : appConfig.getRoutes()) {
+                serverInstance.createContext(route.getEndpoint(), new FunctionHandler(middlewareProcessor, route));
+            }
         } catch (IOException ex) {
             Logger.getLogger(FunctionServer.class.getName()).log(Level.SEVERE, 
                     null, ex);
             Logger.getLogger(FunctionServer.class.getName()).log(Level.SEVERE,
                     "jerverless can't bind in to given port");
-            System.exit(0);
+            System.exit(1);
         }
     }
 
-    public ServerConfig getConfig() {
-        return config;
-    }
-    
-    public static FunctionServer create() {
-        if(instance == null) {
-            instance = new FunctionServer();
-        }
-        return instance;
+    public AppConfig getAppConfig() {
+        return this.appConfig;
     }
     
     public void start() {

@@ -1,5 +1,6 @@
-package org.jerverless.config;
+package org.jerverless.config.loaders;
 
+import org.jerverless.config.app.AppConfig;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
@@ -11,11 +12,11 @@ import java.io.InputStream;
 /**
  * @author Kasun Vithanage
  */
-public class Configuration {
-    String path = ".jerverless";
+public class YAMLConfigLoader implements ConfigLoader {
+    String path;
     AppConfig appConfig;
 
-    public Configuration(String path) throws IOException {
+    public YAMLConfigLoader(String path) throws IOException {
         this.path = path;
         Yaml yaml = new Yaml(new Constructor(AppConfig.class));
 
@@ -35,7 +36,7 @@ public class Configuration {
 
     @Override
     public String toString() {
-        return "Configuration{" +
+        return "YAMLConfigLoader{" +
                 "path='" + path + '\'' +
                 ", appConfig=" + appConfig +
                 '}';

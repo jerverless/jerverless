@@ -29,5 +29,5 @@ jar {
 }
 
 application {
-    mainClassName = "org.jerverless.boot.BootServer"
+    mainClassName = "org.jerverless.boot.Main"
 }
