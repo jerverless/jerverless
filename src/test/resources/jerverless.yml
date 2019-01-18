@@ -1,0 +1,9 @@
+port: 8080
+
+routes:
+  - endpoint: /foo
+    command: test --foo
+    method: GET
+
+  - endpoint: /bar
+    command: test --bar

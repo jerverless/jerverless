@@ -1,0 +1,11 @@
+port: 8080
+cors: '*'
+routes:
+  - endpoint: /foo
+    command: python test.py
+    contentType: text/html
+    cors: 'xyz.com'
+
+  - endpoint: /bar
+    command: python test.py --foo
+    contentType: text/html

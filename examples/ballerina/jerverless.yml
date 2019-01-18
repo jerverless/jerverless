@@ -1,0 +1,6 @@
+port: 8080
+cors: '*'
+routes:
+  - endpoint: /foo
+    command: 'ballerina run HelloWorld.bal'
+    contentType: text/html

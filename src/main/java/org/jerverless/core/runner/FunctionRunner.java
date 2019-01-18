@@ -23,29 +23,27 @@
 package org.jerverless.core.runner;
 
 import com.sun.net.httpserver.HttpExchange;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import org.jerverless.boot.config.ConfigServerlessCommand;
+import org.jerverless.config.app.Route;
 import org.jerverless.core.mappers.inputmappers.InputMapperProcessor;
 import org.jerverless.core.mappers.outputmappers.OutputMapperProcessor;
 import org.jerverless.core.server.FunctionServer;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author shalithasuranga
+ * @author Kasun Vithanage
  */
 public class FunctionRunner implements IFunctionRunner {
+    private Route route;
 
-    private ConfigServerlessCommand commandConfig = null;
-
-    public FunctionRunner (ConfigServerlessCommand commandConfig) {
-        this.commandConfig = commandConfig;
+    public FunctionRunner(Route route) {
+        this.route = route;
     }
 
     public FunctionRunnerResponse exec(HttpExchange he) throws IOException {
@@ -53,10 +51,10 @@ public class FunctionRunner implements IFunctionRunner {
         StringBuilder err = new StringBuilder();
         StringBuilder post = new StringBuilder();
         Runtime runtime = Runtime.getRuntime();
-        String outData = "";
+        String outData;
         
         BufferedReader httpPostData = new BufferedReader(new InputStreamReader(he.getRequestBody()));
-        String postLine = null;
+        String postLine;
         while((postLine = httpPostData.readLine())!= null) {
             post.append(postLine);
         }
@@ -66,22 +64,22 @@ public class FunctionRunner implements IFunctionRunner {
         post.setLength(0);
         post.append(InputMapperProcessor.getInstance(FunctionServer.getInstance()).apply(postDataTmp));
 
-        Process pr = runtime.exec(commandConfig.getCommands());
+        Process pr = runtime.exec(route.getCommandToArray());
         pr.getOutputStream().write(post.toString().getBytes());
         pr.getOutputStream().close();
         
         
         BufferedReader br = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-        String outputLine = null;
+        String outputLine;
         while((outputLine = br.readLine()) != null) {
             out.append(outputLine + '\n');
         }
         br.close();
         
         BufferedReader er = new BufferedReader(new InputStreamReader(pr.getErrorStream()));
-        
 
-        String outputErrorLine = null;
+
+        String outputErrorLine;
         while((outputErrorLine = er.readLine()) != null) {
             err.append(outputErrorLine + '\n');
         }

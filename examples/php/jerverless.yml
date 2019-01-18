@@ -1,0 +1,6 @@
+port: 8080
+cors: '*'
+routes:
+  - endpoint: /function
+    command: 'php helloworld.php'
+    contentType: text/html

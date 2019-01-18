@@ -30,10 +30,16 @@ import org.jerverless.core.middleware.FunctionMiddleware;
  * @author shalithasuranga
  */
 public class CorsMiddleware extends FunctionMiddleware {
+    private String cors;
+
+    public CorsMiddleware(String cors) {
+        this.cors = cors;
+    }
 
     @Override
     public HttpExchange resolve(HttpExchange httpExchange) {
-        httpExchange.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
+        // TODO replace this with injection
+        httpExchange.getResponseHeaders().set("Access-Control-Allow-Origin", cors);
         return httpExchange;
     }
     

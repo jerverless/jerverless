@@ -1,0 +1,6 @@
+port: 8080
+cors: '*'
+routes:
+  - endpoint: /function
+    command: 'python helloworld.py'
+    contentType: text/html

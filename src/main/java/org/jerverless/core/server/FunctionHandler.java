@@ -24,29 +24,33 @@ package org.jerverless.core.server;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import java.io.IOException;
-import java.io.OutputStream;
-
-import org.jerverless.boot.config.ConfigServerlessCommand;
+import org.jerverless.config.app.Route;
 import org.jerverless.core.middleware.MiddlewareProcessor;
 import org.jerverless.core.runner.FunctionRunner;
+
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  *
  * @author shalithasuranga
  */
 public class FunctionHandler implements HttpHandler {
+    private Route route;
+    private MiddlewareProcessor middlewareProcessor;
 
-    private ConfigServerlessCommand commandConfig = null;
+    public FunctionHandler(MiddlewareProcessor middlewareProcessor, Route route) {
+        this.middlewareProcessor = middlewareProcessor;
+        this.route = route;
 
-    public FunctionHandler(ConfigServerlessCommand commandConfig) {
-        this.commandConfig = commandConfig;
+        // register middlewares associated with this route
+        middlewareProcessor.registerMiddlewares(route);
     }
 
     public void handle(HttpExchange he) throws IOException {
-        String out = new FunctionRunner(commandConfig).exec(he).getContent();
-        
-        MiddlewareProcessor.getInstance(FunctionServer.getInstance()).resolve(he);
+        String out = new FunctionRunner(route).exec(he).getContent();
+
+        middlewareProcessor.resolve(route.getEndpoint(), he);
         
         he.sendResponseHeaders(200, out.length());
         OutputStream os = he.getResponseBody();
@@ -54,8 +58,6 @@ public class FunctionHandler implements HttpHandler {
         
         os.write(out.getBytes());
         os.close();
-       
-        
     }
     
 }

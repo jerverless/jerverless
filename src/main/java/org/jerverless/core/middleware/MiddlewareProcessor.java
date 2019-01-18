@@ -23,47 +23,74 @@
 package org.jerverless.core.middleware;
 
 import com.sun.net.httpserver.HttpExchange;
-import java.util.ArrayList;
+import org.jerverless.config.app.AppConfig;
+import org.jerverless.config.app.Route;
 import org.jerverless.core.middleware.middleware.ContentTypeMiddleware;
 import org.jerverless.core.middleware.middleware.CorsMiddleware;
-import org.jerverless.core.server.FunctionServer;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
  * @author shalithasuranga
+ * @author Kasun Vithanage
  */
 public final class MiddlewareProcessor {
     private static MiddlewareProcessor instance = null;
-    private static ArrayList<FunctionMiddleware> middlewareList;
-    private static FunctionServer serverContext;
 
-    public MiddlewareProcessor(FunctionServer server) {
-        serverContext = server;
-        middlewareList = new ArrayList<>();
-        if(serverContext.getConfig().getCorsConfig().isCorsEnabled())
-            addMiddleware(new CorsMiddleware());
-        addMiddleware(new ContentTypeMiddleware(serverContext.getConfig().getTypeConfig()));
-        
+    private static ArrayList<FunctionMiddleware> globalMiddlewares = new ArrayList<>();
+    private static HashMap<String, ArrayList<FunctionMiddleware>> middlewares = new HashMap<>();
+
+    // TODO use DependencyInjection to inject appConfig
+    private AppConfig appConfig;
+
+    public MiddlewareProcessor(AppConfig appConfig) {
+        this.appConfig = appConfig;
+
+        if (appConfig.isCorsEnabled())
+            registerGlobalMiddleware(new CorsMiddleware(appConfig.getCors()));
     }
-    
-    public void addMiddleware(FunctionMiddleware mid) {
-        middlewareList.add(mid);
+
+    public synchronized void registerGlobalMiddleware(FunctionMiddleware middleware) {
+        globalMiddlewares.add(middleware);
     }
-    
-    public void resolve(HttpExchange httpExchange) {
-        for(FunctionMiddleware mid : getMiddlewareList()) {
-            mid.resolve(httpExchange);
+
+    public synchronized void registerMiddleware(String route, FunctionMiddleware middleware) {
+        // TODO check if same middleware registered more than once
+        if (!middlewares.containsKey(route))
+            middlewares.put(route, new ArrayList<>());
+
+        middlewares.get(route).add(middleware);
+    }
+
+    // TODO replace this with a more generic mechanism
+
+    /**
+     * Helper method that allows to register a set of middlewares for a route
+     *
+     * @param route Route to register
+     */
+    public synchronized void registerMiddlewares(Route route) {
+        String endpoint = route.getEndpoint();
+        if (route.getCors() != null)
+            registerMiddleware(endpoint, new CorsMiddleware(route.getCors()));
+
+        if (route.getContentType() != null)
+            registerMiddleware(endpoint, new ContentTypeMiddleware(route.getContentType()));
+    }
+
+    public void resolve(String route, HttpExchange httpExchange) {
+        // lets fireup global middlewares
+        for (FunctionMiddleware middleware : globalMiddlewares) {
+            middleware.resolve(httpExchange);
+        }
+
+        // if they are overridden do it here
+        if (middlewares.containsKey(route)) {
+            for (FunctionMiddleware middleware : middlewares.get(route)) {
+                middleware.resolve(httpExchange);
+            }
         }
     }
-
-    public ArrayList<FunctionMiddleware> getMiddlewareList() {
-        return middlewareList;
-    }
-    
-    public static MiddlewareProcessor getInstance(FunctionServer server) {
-        if(instance == null)
-            instance = new MiddlewareProcessor(server);
-        return instance;
-    }
-    
 }
