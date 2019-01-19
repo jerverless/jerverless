@@ -8,4 +8,3 @@ WORKDIR /usr/src/app
 COPY --from=builder /build/app .
 COPY jerverless.yml .
 EXPOSE 8080
-
