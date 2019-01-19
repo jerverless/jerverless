@@ -31,7 +31,6 @@ branches:
     - gh-pages
     - docs
 
-<<<<<<<<< Temporary merge branch 1
 before_deploy:
   - "./gradlew assembleDist"
 
