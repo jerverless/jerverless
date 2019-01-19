@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk as build
+FROM openjdk:8-jdk as builder
 WORKDIR /app
 COPY . .
 RUN chmod +x gradlew \
