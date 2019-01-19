@@ -5,8 +5,11 @@ language: java
 jdk:
   - oraclejdk8
 
-repos:
-  - jerverless/jerverless
+os:
+  - linux
+  - osx
+
+osx_image: xcode9.3
 
 before_install:
   - chmod +x gradlew
@@ -49,18 +52,10 @@ stages:
 jobs:
   include:
     - stage: build
-      os:
-        - linux
-        - osx
-      osx_image: xcode9.3
       name: "Build"
       script: ./gradlew assemble
 
     - stage: test
-      os:
-        - linux
-        - osx
-      osx_image: xcode9.3
       name: "Test"
       script: ./gradlew check
 
