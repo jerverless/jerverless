@@ -180,7 +180,7 @@ By default it will be installed in `build/install/jerverless`
 To run the distribution, try
 
 ```bash
- $ build/install/bin/jerverless
+ $ build/install/jerverless/bin/jerverless
 ```
 
 ## Become a committer 
