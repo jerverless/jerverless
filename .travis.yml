@@ -5,15 +5,6 @@ language: java
 jdk:
   - oraclejdk8
 
-os:
-  - linux
-  - osx
-
-osx_image: xcode9.3
-
-services:
-  - docker
-
 before_install:
   - chmod +x gradlew
 
@@ -55,10 +46,18 @@ stages:
 jobs:
   include:
     - stage: build
+      os:
+        - linux
+        - osx
+      osx_image: xcode9.3
       name: "Build"
       script: ./gradlew assemble
 
     - stage: test
+      os:
+        - linux
+        - osx
+      osx_image: xcode9.3
       name: "Test"
       script: ./gradlew check
 
@@ -83,6 +82,7 @@ jobs:
 
     - script: '.travis/docker-push'
       os: linux
+      services: docker
       if: env(TRAVIS_EVENT_TYPE) = cron OR tag = true
       before_script: chmod +x .travis/docker-push
       name: "Docker Image"
