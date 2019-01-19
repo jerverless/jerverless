@@ -31,6 +31,23 @@ branches:
     - gh-pages
     - docs
 
+<<<<<<<<< Temporary merge branch 1
+before_deploy:
+  - "./gradlew assembleDist"
+
+deploy:
+  - provider: releases
+    api_key: $GITHUB_API_KEY
+    skip_cleanup: true
+    draft: true
+    file_glob: true
+    file:
+      - build/distributions/*.tar
+      - build/distributions/*.zip
+    on:
+      branch: release
+      tags: true
+=========
 jobs:
   include:
     - stage: build
@@ -68,3 +85,4 @@ jobs:
 
 
 
+>>>>>>>>> Temporary merge branch 2
