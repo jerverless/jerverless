@@ -5,6 +5,9 @@ language: java
 jdk:
   - oraclejdk8
 
+repos:
+  - jerverless/jerverless
+
 before_install:
   - chmod +x gradlew
 
