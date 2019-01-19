@@ -7,5 +7,6 @@ RUN chmod +x gradlew \
 
 FROM openjdk:8-jre-slim
 WORKDIR /usr
-COPY --from=builder /app/build/install/jerverless/* /usr/
+COPY --from=builder /app/build/install/jerverless/* .
+RUN ls -l
 ENTRYPOINT ["/usr/bin/jerverless"]
