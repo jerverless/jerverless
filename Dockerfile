@@ -1,5 +1,3 @@
-MAINTAINER: Kasun Vithanage <alankasun@gmail.com>
-
 FROM openjdk:8-jdk as build
 WORKDIR /app
 COPY . .
