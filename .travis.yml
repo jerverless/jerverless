@@ -47,7 +47,12 @@ deploy:
     on:
       branch: release
       tags: true
-=========
+
+stages:
+  - build
+  - test
+  - deploy
+
 jobs:
   include:
     - stage: build
@@ -82,7 +87,3 @@ jobs:
       if: env(TRAVIS_EVENT_TYPE) = cron OR tag = true
       before_script: chmod +x .travis/docker-push
       name: "Docker Image"
-
-
-
->>>>>>>>> Temporary merge branch 2
