@@ -44,19 +44,28 @@ See more info,
 
 ### On Machine (or VM)
 
-1. Download **jar**
-```
- $ curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v1.0.0/jerverless-1.0.0.jar > jerverless.jar
-```
+1. Download **Jerverless** and extract the archive
 
-2. Create `jerverless.properties`
-```
-/function = python helloworld.py
-port = 8080
-cors = true
+2. Create `jerverless.yml`
+```yaml
+# use port 8080
+port: 8080
+# enable CORS for the server
+cors: '*'
+# Define your routes
+routes:
+  # a sample route with
+  - endpoint: /foo # endpoint /foo
+    command: python test.py # command to run
+    contentType: text/html # set content type
+    
+  - endpoint: /bar #endpoint /bar
+    command: python test.py --bar # command with an argument
+    contentType: text/html # set your content type
+    cors: 'xyz.com' # override cors for this specific route
 ```
 3. Create your program (eg:- `helloworld.py`)
-
+>We are using python2.7 in example
 ```python
 name = raw_input()
 print "Hello %s!" % name
@@ -64,13 +73,19 @@ print "Hello %s!" % name
 4. Start server!
 
 ```
- $ java -jar jerverless.jar
+ $ bin/jerverless
+```
+
+or if you are on windows
+
+```
+ $ bin\jerverless.bat
 ```
 
 5. Test it!
 
 ```
- $ curl -d Jerverless http://localhost:8080/function
+ $ curl -d Jerverless http://localhost:8080/foo
 ```
 
 Or simply use [template](https://github.com/jerverless/jerverless/tree/master/examples) and jump to last step! 
@@ -165,7 +180,7 @@ By default it will be installed in `build/install/jerverless`
 To run the distribution, try
 
 ```bash
- $ build/install/bin/jerverless
+ $ build/install/jerverless/bin/jerverless
 ```
 
 ## Become a committer 
