@@ -2,5 +2,5 @@ port: 8080
 cors: '*'
 routes:
   - endpoint: /function
-    command: 'java HelloWorld'
+    command: 'java -cp ./ HelloWorld'
     contentType: text/html
