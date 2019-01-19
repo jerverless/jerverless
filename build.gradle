@@ -24,7 +24,7 @@ dependencies{
 
 jar {
     manifest {
-        attributes 'Main-Class': 'org.jerverless.boot.BootServer'
+        attributes 'Main-Class': 'org.jerverless.boot.Main'
     }
 }
 
