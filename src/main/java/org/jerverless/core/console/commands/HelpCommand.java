@@ -32,8 +32,8 @@ import org.jerverless.core.console.ServerConsole;
  */
 public class HelpCommand extends ConsoleCommand {
 
-    public static String COMMAND = "help";
-    public static String DESC = "Display CLI manual.";
+    public static final String COMMAND = "help";
+    public static final String DESC = "Display CLI manual.";
     private static String Output = null;
     
     public HelpCommand(ServerConsole console) {

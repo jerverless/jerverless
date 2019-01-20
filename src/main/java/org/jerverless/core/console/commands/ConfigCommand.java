@@ -29,13 +29,12 @@ import org.jerverless.core.console.ServerConsole;
 import java.util.List;
 
 /**
- *
  * @author Daxter44
  */
 public class ConfigCommand extends ConsoleCommand {
 
-    public static String COMMAND = "config";
-    public static String DESC = "Show current Configuration";
+    public static final String COMMAND = "config";
+    public static final String DESC = "Show current Configuration";
     private String Output = null;
     private AppConfig appConfig = null;
 
@@ -48,8 +47,7 @@ public class ConfigCommand extends ConsoleCommand {
             Output = "";
             Output ="Current configuration : " +
                     "\n\tport="+ appConfig.getPort() +
-                    "\n\tcors" +
-                    "="+ appConfig.getCors() +
+                    "\n\tcors" +"="+ appConfig.getCors() +
                     "\n\troutes=\n"+ getRoutesDesc(appConfig.getRoutes());
         }
         return Output;
@@ -73,8 +71,4 @@ public class ConfigCommand extends ConsoleCommand {
     public void exec() {
         System.out.println(generateOutput());
     }
-
-
-
-
 }

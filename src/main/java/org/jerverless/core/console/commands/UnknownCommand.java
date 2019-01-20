@@ -30,8 +30,8 @@ import org.jerverless.core.console.ServerConsole;
  */
 public class UnknownCommand extends ConsoleCommand {
     
-    public static String COMMAND = "unknown";
-    public static String DESC = "unknown";
+    public static final String COMMAND = "unknown";
+    public static final String DESC = "unknown";
 
     public UnknownCommand(ServerConsole console) {
         super(console);

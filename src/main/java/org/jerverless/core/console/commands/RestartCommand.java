@@ -30,8 +30,8 @@ import org.jerverless.core.console.ServerConsole;
  */
 public class RestartCommand extends ConsoleCommand {
 
-    public static String COMMAND = "restart";
-    public static String DESC = "Restart Function Server";
+    public static final String COMMAND = "restart";
+    public static final String DESC = "Restart Function Server";
     
     public RestartCommand(ServerConsole console) {
         super(console);

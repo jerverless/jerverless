@@ -37,19 +37,16 @@ public class CommandFactory {
     }
 
     public ConsoleCommand make(String input) {
-        if(input.equals(RestartCommand.COMMAND)) {
-            return new RestartCommand(consoleContext);
+        switch(input){
+            case RestartCommand.COMMAND:
+                return new RestartCommand(consoleContext);
+            case HelpCommand.COMMAND:
+                return new HelpCommand(consoleContext);
+            case StopCommand.COMMAND:
+                return new StopCommand(consoleContext);
+            case ConfigCommand.COMMAND:
+                return new ConfigCommand(consoleContext);
+            default:return  new UnknownCommand(consoleContext);
         }
-        else if (input.equals(HelpCommand.COMMAND)) {
-            return new HelpCommand(consoleContext);
-        }
-        else if (input.equals(StopCommand.COMMAND)) {
-            return new StopCommand(consoleContext);
-        }
-        else if (input.equals(ConfigCommand.COMMAND)) {
-            return new ConfigCommand(consoleContext);
-        }
-        return new UnknownCommand(consoleContext);
     }
-
 }

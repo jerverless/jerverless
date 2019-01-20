@@ -49,7 +49,7 @@ public class ServerConsole {
         supportedCommands = new ConsoleCommand[] {
             new StopCommand(this),
             new RestartCommand(this),
-                new ConfigCommand(this),
+            new ConfigCommand(this),
             new HelpCommand(this)
         };
     }
