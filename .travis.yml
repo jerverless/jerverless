@@ -1,3 +1,5 @@
+sudo: required
+
 language: java
 
 jdk:
@@ -26,18 +28,34 @@ branches:
     - gh-pages
     - docs
 
-before_deploy:
-  - "./gradlew assembleDist"
+stages:
+  - test
+  - deploy
 
-deploy:
-  - provider: releases
-    api_key: $GITHUB_API_KEY
-    skip_cleanup: true
-    draft: true
-    file_glob: true
-    file:
-      - build/distributions/*.tar
-      - build/distributions/*.zip
-    on:
-      branch: release
-      tags: true
+jobs:
+  include:
+    - stage: deploy
+      os: linux
+      if: tag IS present
+      name: "Github Releases"
+      script: skip
+      before_deploy: "./gradlew assembleDist"
+      deploy:
+        - provider: releases
+          api_key: $GITHUB_API_KEY
+          skip_cleanup: true
+          draft: true
+          file_glob: true
+          file:
+            - build/distributions/*.tar
+            - build/distributions/*.zip
+          on:
+            branch: release
+            tags: true
+
+    - script: '.travis/docker-push.sh'
+      os: linux
+      services: docker
+      if: env(TRAVIS_EVENT_TYPE) = cron OR tag IS present
+      before_script: chmod +x .travis/docker-push.sh
+      name: "Docker Image"
