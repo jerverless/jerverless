@@ -5,7 +5,7 @@ RUN chmod +x gradlew \
     && ./gradlew assemble \
     && ./gradlew installDist
 
- FROM openjdk:8-jre-slim
+FROM openjdk:8-jre-slim
 WORKDIR /usr/jerverless-home
 COPY --from=builder /app/build/install/jerverless ./
 ENTRYPOINT ["/usr/jerverless-home/bin/jerverless"]

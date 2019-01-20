@@ -87,7 +87,7 @@ public class ServerConsole {
                 System.out.flush();
                 while(!stopSig) {
                     if(getScannerInstance().hasNextLine()) {
-                        String cmd = getScannerInstance().nextLine();
+                        String cmd = getScannerInstance().nextLine().toLowerCase();
                         commandFactory.make(cmd).exec();
                         System.out.print("> ");
                         System.out.flush();
