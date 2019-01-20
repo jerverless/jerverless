@@ -6,4 +6,5 @@ RUN rustc helloworld.rc
 FROM jerverless/jerverless:latest
 WORKDIR /app
 COPY --from=builder /build/helloworld .
+COPY jerverless.yml .
 EXPOSE 8080

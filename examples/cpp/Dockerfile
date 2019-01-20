@@ -1,5 +1,6 @@
 FROM ubuntu:18.04 as builder
 WORKDIR /app
+COPY hello.cpp .
 RUN apt-get update \
     && apt-get -y install build-essential \
     && g++ hello.cpp -o hello
