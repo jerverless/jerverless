@@ -45,20 +45,11 @@ deploy:
       tags: true
 
 stages:
-  - build
   - test
   - deploy
 
 jobs:
   include:
-    - stage: build
-      name: "Build"
-      script: ./gradlew assemble
-
-    - stage: test
-      name: "Test"
-      script: ./gradlew check
-
     - stage: deploy
       os: linux
       if: tag = true
