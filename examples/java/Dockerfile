@@ -1,7 +1,10 @@
-FROM java:8
+FROM java:8 as builder
 WORKDIR /app
-COPY . .
-RUN curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.1.0/org.jerverless-0.1.0.jar > jerverless.jar \
-    && chmod +x jerverless.jar \
-    && javac HelloWorld.java
-ENTRYPOINT ["java", "-jar", "jerverless.jar"] 
+COPY HelloWorld.java .
+RUN javac HelloWorld.java
+
+FROM jerverless/jerverless:latest
+WORKDIR /app
+COPY --from=builder /app/HelloWorld.class .
+COPY jerverless.yml .
+EXPOSE 8080

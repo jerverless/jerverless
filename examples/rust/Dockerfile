@@ -1,9 +1,10 @@
-FROM java:8
+FROM rust:1.31 as builder
+WORKDIR /build
+COPY helloworld.rs .
+RUN rustc helloworld.rs
+
+FROM jerverless/jerverless:latest
 WORKDIR /app
-COPY . .
-RUN curl --ssl -L https://github.com/jerverless/jerverless/releases/download/v0.1.0/org.jerverless-0.1.0.jar > jerverless.jar \
-    && chmod +x jerverless.jar \
-    && apt-get update \
-    && apt-get install -y rustc \
-    && rustc helloworld.rs
-ENTRYPOINT ["java", "-jar", "jerverless.jar"] 
+COPY --from=builder /build/helloworld .
+COPY jerverless.yml .
+EXPOSE 8080
