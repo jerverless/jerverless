@@ -1,5 +1,3 @@
-sudo: required
-
 language: java
 
 jdk:
@@ -43,44 +41,3 @@ deploy:
     on:
       branch: release
       tags: true
-
-stages:
-  - build
-  - test
-  - deploy
-
-jobs:
-  include:
-    - stage: build
-      name: "Build"
-      script: ./gradlew assemble
-
-    - stage: test
-      name: "Test"
-      script: ./gradlew check
-
-    - stage: deploy
-      os: linux
-      if: tag = true
-      name: "Github Releases"
-      script: skip
-      before_deploy: "./gradlew assembleDist"
-      deploy:
-        - provider: releases
-          api_key: $GITHUB_API_KEY
-          skip_cleanup: true
-          draft: true
-          file_glob: true
-          file:
-            - build/distributions/*.tar
-            - build/distributions/*.zip
-          on:
-            branch: release
-            tags: true
-
-    - script: '.travis/docker-push'
-      os: linux
-      services: docker
-      if: env(TRAVIS_EVENT_TYPE) = cron OR tag = true
-      before_script: chmod +x .travis/docker-push
-      name: "Docker Image"
