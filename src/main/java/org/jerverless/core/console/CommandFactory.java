@@ -22,24 +22,20 @@
 
 package org.jerverless.core.console;
 
-import org.jerverless.core.console.commands.ConsoleCommand;
-import org.jerverless.core.console.commands.HelpCommand;
-import org.jerverless.core.console.commands.RestartCommand;
-import org.jerverless.core.console.commands.StopCommand;
-import org.jerverless.core.console.commands.UnknownCommand;
+import org.jerverless.core.console.commands.*;
 
 /**
  *
  * @author ShalithaS
  */
 public class CommandFactory {
-    
+
     private static ServerConsole consoleContext = null;
 
     public CommandFactory(ServerConsole console) {
         consoleContext = console;
     }
-    
+
     public ConsoleCommand make(String input) {
         if(input.equals(RestartCommand.COMMAND)) {
             return new RestartCommand(consoleContext);
@@ -50,7 +46,10 @@ public class CommandFactory {
         else if (input.equals(StopCommand.COMMAND)) {
             return new StopCommand(consoleContext);
         }
+        else if (input.equals(ConfigCommand.COMMAND)) {
+            return new ConfigCommand(consoleContext);
+        }
         return new UnknownCommand(consoleContext);
     }
-    
+
 }

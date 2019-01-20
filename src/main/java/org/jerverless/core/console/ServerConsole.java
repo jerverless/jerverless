@@ -23,10 +23,8 @@
 package org.jerverless.core.console;
 
 import java.util.Scanner;
-import org.jerverless.core.console.commands.ConsoleCommand;
-import org.jerverless.core.console.commands.HelpCommand;
-import org.jerverless.core.console.commands.RestartCommand;
-import org.jerverless.core.console.commands.StopCommand;
+
+import org.jerverless.core.console.commands.*;
 import org.jerverless.core.server.FunctionServer;
 
 /**
@@ -51,6 +49,7 @@ public class ServerConsole {
         supportedCommands = new ConsoleCommand[] {
             new StopCommand(this),
             new RestartCommand(this),
+                new ConfigCommand(this),
             new HelpCommand(this)
         };
     }
