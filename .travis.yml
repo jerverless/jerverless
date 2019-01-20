@@ -53,9 +53,9 @@ jobs:
             branch: release
             tags: true
 
-    - script: '.travis/docker-push'
+    - script: '.travis/docker-push.sh'
       os: linux
       services: docker
       if: env(TRAVIS_EVENT_TYPE) = cron OR tag IS present
-      before_script: chmod +x .travis/docker-push
+      before_script: chmod +x .travis/docker-push.sh
       name: "Docker Image"
