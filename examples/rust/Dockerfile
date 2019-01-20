@@ -1,7 +1,7 @@
 FROM rust:1.31 as builder
 WORKDIR /build
 COPY helloworld.rs .
-RUN rustc helloworld.rc
+RUN rustc helloworld.rs
 
 FROM jerverless/jerverless:latest
 WORKDIR /app
