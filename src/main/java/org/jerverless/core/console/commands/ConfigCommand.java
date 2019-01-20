@@ -22,48 +22,53 @@
 
 package org.jerverless.core.console.commands;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.jerverless.config.app.AppConfig;
+import org.jerverless.config.app.Route;
 import org.jerverless.core.console.ServerConsole;
 
-/**
- *
- * @author shalithasuranga
- */
-public class HelpCommand extends ConsoleCommand {
+import java.util.List;
 
-    public static final String COMMAND = "help";
-    public static final String DESC = "Display CLI manual.";
-    private static String Output = null;
-    
-    public HelpCommand(ServerConsole console) {
+/**
+ * @author Daxter44
+ */
+public class ConfigCommand extends ConsoleCommand {
+
+    public static final String COMMAND = "config";
+    public static final String DESC = "Show current Configuration";
+    private String Output = null;
+    private AppConfig appConfig = null;
+
+    public ConfigCommand(ServerConsole console) {
         super(console);
     }
-    
     private String generateOutput() {
         if(Output == null) {
+            appConfig = consoleContext.getServerContext().getAppConfig();
             Output = "";
-            for(ConsoleCommand cmd : consoleContext.getSupportedCommands()) {
-                try {
-                    Class cmdClass = cmd.getClass();
-                    Output += cmdClass.getDeclaredField("COMMAND").get(null) + "\t" + 
-                            cmdClass.getDeclaredField("DESC").get(null) + "\n";
-                } catch (Exception ex) {
-                    Logger.getLogger(HelpCommand.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            Output ="Current configuration : " +
+                    "\n\tport="+ appConfig.getPort() +
+                    "\n\tcors" +"="+ appConfig.getCors() +
+                    "\n\troutes=\n"+ getRoutesDesc(appConfig.getRoutes());
         }
-        
         return Output;
     }
-
-    public String getOutput() {
-        return Output;
+    private String getRoutesDesc(List<Route> routes ){
+        String routesDesc = "";
+        int routeNumber = 0 ;
+        for(Route route:routes){
+            routeNumber ++;
+            routesDesc += "\t\t{Route" + routeNumber;
+            routesDesc += "\n\t\tendpoint=" + route.getEndpoint();
+            routesDesc += "\n\t\tcommand=" + route.getCommand();
+            routesDesc += "\n\t\tmethod=" + route.getMethod();
+            routesDesc += "\n\t\tcontentType=" + route.getContentType();
+            routesDesc += "\n\t\tcors=" + route.getCors();
+            routesDesc +="}\n";
+        }
+        return  routesDesc;
     }
-
     @Override
     public void exec() {
         System.out.println(generateOutput());
     }
-    
 }
