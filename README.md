@@ -2,6 +2,7 @@
    <img src="media/jerverless_logo.png">
 </div>
 <br/>
+
 [![GitHub license](https://img.shields.io/github/license/jerverless/jerverless.svg)](https://github.com/jerverless/jerverless/blob/master/LICENSE) 
  [![Build Status](https://travis-ci.com/jerverless/jerverless.svg?branch=master)](https://travis-ci.com/jerverless/jerverless)
  [![GitHub (pre-)release](https://img.shields.io/github/release/jerverless/jerverless/all.svg)](https://github.com/jerverless/jerverless/releases)
