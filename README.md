@@ -2,12 +2,12 @@
    <img src="media/jerverless_logo.png">
 </div>
 <br/>
-
 [![GitHub license](https://img.shields.io/github/license/jerverless/jerverless.svg)](https://github.com/jerverless/jerverless/blob/master/LICENSE) 
  [![Build Status](https://travis-ci.com/jerverless/jerverless.svg?branch=master)](https://travis-ci.com/jerverless/jerverless)
  [![GitHub (pre-)release](https://img.shields.io/github/release/jerverless/jerverless/all.svg)](https://github.com/jerverless/jerverless/releases)
   [![GitHub last commit](https://img.shields.io/github/last-commit/jerverless/jerverless.svg)](https://github.com/jerverless/jerverless/commits/master)
 [![HitCount](http://hits.dwyl.io/jerverless/jerverless.svg)](http://hits.dwyl.io/jerverless/jerverless)
+[![OpenCollective Backers](https://opencollective.com/jerverless/tiers/backer/badge.svg?label=backer&color=brightgreen)](https://opencollective.com/jerverless) 
 
 Turn anything into a serverless function.. Docker ready!
 
