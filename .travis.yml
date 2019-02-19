@@ -53,7 +53,8 @@ jobs:
             branch: release
             tags: true
 
-    - script: '.travis/docker-push.sh'
+    - stage: deploy
+      script: '.travis/docker-push.sh'
       os: linux
       services: docker
       if: type = cron OR tag IS present
